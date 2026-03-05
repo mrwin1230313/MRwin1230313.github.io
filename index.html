@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>南安一中32班 - 搞怪大本营</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Comic Sans MS", "幼圆", sans-serif;
+        }
+
+        body {
+            background-color: #fcf0f5;
+            background-image: url('https://picsum.photos/id/175/1920/1080');
+            background-attachment: fixed;
+            background-size: cover;
+            background-blend-mode: soft-light;
+            min-height: 100vh;
+            padding-bottom: 20px;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        nav {
+            background-color: #ff6b8b;
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(255, 107, 139, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        /* 导航栏滚动收缩效果 */
+        nav.scroll {
+            padding: 0.5rem 5%;
+            background-color: #ff6b8bdd;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            text-shadow: 2px 2px 4px #ff4757;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .logo span {
+            color: #fff200;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+            position: relative;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #fff200;
+            transform: scale(1.1);
+        }
+
+        /* 导航链接下划线动画 */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: #fff200;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-btn {
+            display: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 5px;
+            transition: transform 0.2s ease;
+        }
+
+        .menu-btn:active {
+            transform: scale(0.9);
+        }
+
+        .hero {
+            padding: 6rem 5%;
+            text-align: center;
+            color: #2f3542;
+            background-color: rgba(255, 255, 255, 0.85);
+            margin: 2rem 5%;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            border: 3px dashed #ff6b8b;
+            transition: transform 0.5s ease;
+        }
+
+        .hero:hover {
+            transform: scale(1.01);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #ff6b8b;
+            text-shadow: 3px 3px 0 #fff200;
+            transform: rotate(-2deg);
+            display: inline-block;
+            transform-origin: center;
+            animation: bounce 2s infinite alternate;
+        }
+
+        /* 标题弹跳动画 */
+        @keyframes bounce {
+            from { transform: rotate(-2deg) scale(1); }
+            to { transform: rotate(-2deg) scale(1.05); }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .class-slogan {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff4757;
+            margin: 1rem 0;
+            animation: shake 3s infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .btn {
+            background-color: #ff6b8b;
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: bold;
+            box-shadow: 0 4px 0 #ff4757;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 按钮点击波纹效果 */
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .btn:active::after {
+            width: 300px;
+            height: 300px;
+            opacity: 0;
+        }
+
+        .btn:hover {
+            background-color: #ff4757;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 0 #ff3838;
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 0 #ff3838;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            color: #ff6b8b;
+            text-shadow: 2px 2px 0 #fff200;
+            transition: all 0.3s ease;
+        }
+
+        .section-title:hover {
+            transform: scale(1.05);
+        }
+
+        .quotes {
+            padding: 4rem 5%;
+            margin: 2rem 0;
+        }
+
+        .quotes-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 3px dashed #ff6b8b;
+        }
+
+        .quote-card {
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid #fff200;
+            background-color: #fff8e1;
+            border-radius: 10px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 语录卡片hover发光效果 */
+        .quote-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,242,0,0.2), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .quote-card:hover::before {
+            left: 100%;
+        }
+
+        .quote-card:hover {
+            transform: translateX(10px) scale(1.02);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .quote-card p {
+            font-size: 1.2rem;
+            color: #2f3542;
+            line-height: 1.8;
+        }
+
+        .quote-card .author {
+            text-align: right;
+            font-weight: bold;
+            color: #ff6b8b;
+            margin-top: 0.5rem;
+        }
+
+        .vote {
+            padding: 4rem 5%;
+            margin: 2rem 0;
+        }
+
+        .vote-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 3px dashed #ff6b8b;
+        }
+
+        .vote-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        /* 投票选项选中效果 */
+        .vote-item.selected {
+            background-color: #ffebee;
+            border-color: #ff6b8b;
+        }
+
+        .vote-item:hover {
+            background-color: #ffebee;
+            transform: translateY(-2px);
+        }
+
+        .vote-item label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.1rem;
+            flex-wrap: wrap;
+        }
+
+        .vote-item input {
+            margin-right: 1rem;
+            width: 1.2rem;
+            height: 1.2rem;
+            accent-color: #ff6b8b;
+            cursor: pointer;
+        }
+
+        #voteResult {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: #fff200;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            color: #2f3542;
+            display: none;
+            animation: fadeIn 0.5s ease-in-out, bounce 1s infinite alternate;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 植物培养箱样式 */
+        .product {
+            padding: 4rem 5%;
+            margin: 2rem 0;
+        }
+
+        .product-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 3px dashed #ff6b8b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .product-info {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .product-info h3 {
+            font-size: 2rem;
+            color: #ff6b8b;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 0 #fff200;
+            text-align: center;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-features li {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .product-features li::before {
+            content: '🌱';
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+
+        .product-specs {
+            background-color: #f0fff4;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 5px solid #36d399;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-specs h4 {
+            color: #22c55e;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-funny {
+            background-color: #fff8e6;
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 5px solid #f59e0b;
+            font-size: 1.1rem;
+            color: #7c2d12;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        /* 飞牛NAS服务器样式 */
+        .nas-product {
+            padding: 4rem 5%;
+            margin: 2rem 0;
+        }
+
+        .nas-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 3px dashed #4ade80;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nas-info {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .nas-info h3 {
+            font-size: 2rem;
+            color: #22c55e;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 0 #a7f3d0;
+            text-align: center;
+        }
+
+        .nas-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .nas-features li {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .nas-features li::before {
+            content: '🖥️';
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+
+        .nas-specs {
+            background-color: #eff6ff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 5px solid #3b82f6;
+            margin-bottom: 1.5rem;
+        }
+
+        .nas-specs h4 {
+            color: #2563eb;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background-color: #ff6b8b;
+            color: white;
+            text-align: center;
+            padding: 2rem 5%;
+            margin-top: 3rem;
+            border-top: 5px solid #fff200;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        footer:hover {
+            background-color: #ff4757;
+        }
+
+        footer p {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .class-info {
+            font-weight: bold;
+            color: #fff200;
+        }
+
+        .loader {
+            display: none;
+            border: 4px solid #ff6b8b;
+            border-top: 4px solid #fff200;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* 自定义Toast样式 */
+        .custom-toast {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ff6b8b;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 9999;
+            font-size: 1.2rem;
+            text-align: center;
+            animation: toastPop 0.3s ease-in-out, toastFade 0.3s ease-in-out 2.7s forwards;
+        }
+
+        @keyframes toastPop {
+            from { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+            to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+
+        @keyframes toastFade {
+            to { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+        }
+
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #ff6b8b;
+                flex-direction: column;
+                padding: 1rem 5%;
+                display: none;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                animation: menuSlide 0.3s ease-in-out;
+            }
+
+            @keyframes menuSlide {
+                from { transform: translateY(-20px); opacity: 0; }
+                to { transform: translateY(0); opacity: 1; }
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+                margin-left: 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                transform: rotate(-1deg);
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .btn {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+                display: block;
+                margin: 0 auto;
+                width: fit-content;
+            }
+
+            .quotes-container, .vote-container {
+                padding: 1.5rem 1rem;
+            }
+            
+            .product-info h3, .nas-info h3 {
+                font-size: 1.6rem;
+            }
+            
+            .product-features li, .nas-features li {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <div class="nav-container">
+    <div class="logo" id="logo">南安一中<span>32</span>班</div>
+    <div class="menu-btn" id="menuBtn">😜</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">首页</a></li>
+      <li><a href="#quotes">班级语录</a></li>
+      <li><a href="#vote">趣味投票</a></li>
+      <li><a href="#product">植物培养箱</a></li> 
+      <li><a href="#nas-product">飞牛NAS服务器</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <h1>在32班你就只是个萝莉</h1>
+  <p>这里是南安一中32班的专属搞怪阵地，记录我们的沙雕日常、爆笑瞬间和那些年一起说过的梗～</p>
+  <div class="class-slogan">32班出品，必属精品！不疯魔，不成活！</div>
+  <a href="#quotes" class="btn">查看班级语录 💬</a>
+</section>
+
+<section class="quotes" id="quotes">
+  <h2 class="section-title">💬 32班经典语录</h2>
+  <div class="quotes-container">
+    <div class="quote-card">
+      <p>"这道题我会！等等，让我先算错一遍给你们看看反面教材。"</p>
+      <p class="author">—— 建鑫</p>
+    </div>
+    <div class="quote-card">
+      <p>"老师，我作业忘带了，但我保证它在我书包里，只是书包忘在家里了。"</p>
+      <p class="author">—— 书雄</p>
+    </div>
+    <div class="quote-card">
+      <p>"再睡五分钟，就五分钟，绝对不迟到！"</p>
+      <p class="author">—— 每天踩点进教室的国云</p>
+    </div>
+    <div class="quote-card">
+      <p>"32班的目标：没有第一！哦不对，是没有倒数第一！"</p>
+      <p class="author">—— 梓晨</p>
+    </div>
+    <div class="quote-card">
+      <p>"体育课才是主课，其他都是副课！"</p>
+      <p class="author">—— 锦阳</p>
+    </div>
+  </div>
+</section>
+
+<section class="vote" id="vote">
+  <h2 class="section-title">🗳️ 32班趣味投票</h2>
+  <div class="vote-container">
+    <form id="voteForm">
+      <div class="vote-item">
+        <label><input type="radio" name="classVote" value="钰玲"> 班里的"睡神"是谁？（钰玲）</label>
+      </div>
+      <div class="vote-item">
+        <label><input type="radio" name="classVote" value="锦阳"> 班里的"篮球大神"是谁？（锦阳）</label>
+      </div>
+      <div class="vote-item">
+        <label><input type="radio" name="classVote" value="书雄"> 班里的"梗王"是谁？（书雄）</label>
+      </div>
+      <div class="vote-item">
+        <label><input type="radio" name="classVote" value="国云"> 班里的"迟到专业户"是谁？（国云）</label>
+      </div>
+      <div class="vote-item">
+        <label><input type="radio" name="classVote" value="君翔"> （君翔）</label>
+      </div>
+      <div class="vote-item">
+        <label><input type="radio" name="classVote" value="建鑫"> （建鑫）</label>
+      </div>
+      <div class="vote-item">
+        <label><input type="radio" name="classVote" value="班长"> （班长）</label>
+      </div>
+      <div class="vote-item">
+        <label><input type="radio" name="classVote" value="我不想说"> （你猜）</label>
+      </div>
+      <div class="vote-item">
+        <label><input type="radio" name="classVote" value="老班"> </label>
+      </div>
+      
+      <div class="loader" id="loader"></div>
+      <button type="submit" class="btn">提交投票 🎉</button>
+    </form>
+    <div id="voteResult"></div>
+  </div>
+</section>
+
+<!-- 植物培养箱产品介绍板块（已删除图片和购买相关） -->
+<section class="product" id="product">
+  <h2 class="section-title">🌿 植物培养箱 - 32班专属款</h2>
+  <div class="product-container">
+    <div class="product-info">
+      <h3>智能植物培养箱 Pro Max</h3>
+      <ul class="product-features">
+        <li>🌡️ 智能温控：10-40℃精准调节，不怕冬天冷夏天热</li>
+        <li>💡 全光谱LED灯：模拟太阳光，植物长得比32班同学还快</li>
+        <li>💧 自动浇水：懒癌患者福音，一周不浇水也不怕</li>
+        <li>🔄 循环通风：空气流通不闷根，告别烂叶子</li>
+        <li>📱 青龙控制：自动调参数（对接飞牛NAS）</li>
+        <li>🔋 断电续航：突然停电？培养箱比32班同学还坚挺</li>
+      </ul>
+      
+      <div class="product-specs">
+        <h4>📊 产品参数</h4>
+        <p>尺寸：60×45×80cm | 功率：80W | 容量：120L | 材质：泡沫</p>
+      </div>
+      
+      <div class="product-funny">
+        专属彩蛋：培养箱内置AI，可通过飞牛NAS的OAMLL大模型智能分析植物生长状态
+      </div>
+      
+      <a href="#nas-product" class="btn">查看联动NAS 📡</a>
+    </div>
+  </div>
+</section>
+
+<!-- 飞牛NAS服务器产品板块（已删除图片和购买相关） -->
+<section class="nas-product" id="nas-product">
+  <h2 class="section-title">🖥️ 飞牛NAS服务器 - 智能控制中枢</h2>
+  <div class="nas-container">
+    <div class="nas-info">
+      <h3>飞牛NAS Mini Pro - 32班定制版</h3>
+      <ul class="nas-features">
+        <li>🐉 青龙面板：定时执行培养箱指令，比班长还准时</li>
+        <li>🤖 OAMLL大模型：智能分析植物数据，生成专属生长方案</li>
+        <li>🔗 设备绑定：一键联动植物培养箱，数据实时同步</li>
+        <li>💾 海量存储：存下32班所有表情包+植物生长日志</li>
+        <li>🌐 远程控制：上课偷偷调培养箱参数，老班发现不了</li>
+        <li>🔒 32班专属加密：防止隔壁班偷用我们的AI方案</li>
+      </ul>
+      
+      <div class="nas-specs">
+        <h4>📊 NAS参数</h4>
+        <p>CPU：四核ARM | 内存：4GB | 存储：8TB | 接口：千兆网口×2 + USB3.0×2 | 系统：青龙OS定制版</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="class-info">南安一中32班 - 搞怪永不打烊 🎉</p>
+  <p>制作于2026年 | 班级专属，禁止外传（偷偷看也没事😜）</p>
+</footer>
+
+<script>
+// 核心元素获取
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+const logo = document.getElementById('logo');
+const voteForm = document.getElementById('voteForm');
+const voteResult = document.getElementById('voteResult');
+const loader = document.getElementById('loader');
+const mainNav = document.getElementById('mainNav');
+const voteItems = document.querySelectorAll('.vote-item');
+
+// 1. 页面加载完成动画
+window.addEventListener('load', () => {
+  document.body.style.opacity = '1';
+  
+  // 欢迎Toast
+  showToast('欢迎来到32班搞怪大本营！🎉', 3000);
+});
+
+// 2. 导航栏滚动效果
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    mainNav.classList.add('scroll');
+  } else {
+    mainNav.classList.remove('scroll');
+  }
+});
+
+// 3. 移动端菜单交互
+menuBtn.addEventListener('click', () => {
+  navLinks.classList.toggle('show');
+  menuBtn.textContent = navLinks.classList.contains('show') ? '❌' : '😜';
+  
+  // 菜单切换提示
+  showToast(navLinks.classList.contains('show') ? '菜单已打开～' : '菜单已关闭～', 1000);
+});
+
+// 4. 投票选项选中高亮
+voteItems.forEach(item => {
+  const radio = item.querySelector('input[type="radio"]');
+  
+  radio.addEventListener('change', () => {
+    // 清除所有选中样式
+    voteItems.forEach(i => i.classList.remove('selected'));
+    // 给当前选中项加样式
+    item.classList.add('selected');
+  });
+  
+  // 点击选项也选中
+  item.addEventListener('click', () => {
+    radio.checked = true;
+    voteItems.forEach(i => i.classList.remove('selected'));
+    item.classList.add('selected');
+  });
+});
+
+// 5. 投票提交交互
+voteForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const selectedOption = document.querySelector('input[name="classVote"]:checked');
+  
+  if (!selectedOption) {
+    const tips = [
+      "选一个再投嘛～不然怎么知道谁是32班的隐藏大佬😜",
+      "别偷懒！不选的话罚你给全班带零食🍟",
+      "快选快选！晚了就投不了啦～",
+      "不投票？小心被老班点名哦😱"
+    ];
+    showToast(tips[Math.floor(Math.random() * tips.length)], 2000);
+    return;
+  }
+
+  // 显示加载动画
+  loader.style.display = 'block';
+  
+  // 模拟加载延迟
+  setTimeout(() => {
+    const results = {
+      "钰玲": "恭喜！你投给了班里的睡神钰玲～这位同学已经成功解锁「上课睡觉不被抓」成就！",
+      "锦阳": "花心大萝贝😜",
+      "书雄": "不愧是梗王书雄！32班的快乐源泉就是你✨～",
+      "国云": "迟到但不缺席，国云是个蛋🥚",
+      "君翔": "将思恋化老鼠🐭",
+      "建鑫": "解题鬼才建鑫！就算算错也能把你讲懵😎",
+      "班长": "传奇耐操王💪",
+      "我不想说": "全班最拉的拉拉🚜",
+      "老班": "老班还是太权威了👑"
+    };
+
+    // 隐藏加载动画，显示结果
+    loader.style.display = 'none';
+    voteResult.style.display = 'block';
+    voteResult.textContent = results[selectedOption.value];
+    voteResult.scrollIntoView({ behavior: 'smooth' });
+
+    // 禁用所有投票选项
+    document.querySelectorAll('input[name="classVote"]').forEach(radio => {
+      radio.disabled = true;
+    });
+    
+    // 按钮状态修改
+    const submitBtn = voteForm.querySelector('.btn');
+    submitBtn.textContent = "已投票 ✅";
+    submitBtn.disabled = true;
+    submitBtn.style.backgroundColor = '#ccc';
+    submitBtn.style.boxShadow = 'none';
+    submitBtn.style.cursor = 'not-allowed';
+    
+    // 投票成功提示
+    showToast('投票成功！感谢你的参与～🎊', 2000);
+  }, 800);
+});
+
+// 6. 平滑滚动导航
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href');
+    const targetElement = document.querySelector(targetId);
+    
+    if (targetElement) {
+      // 平滑滚动
+      window.scrollTo({
+        top: targetElement.offsetTop - 80,
+        behavior: 'smooth'
+      });
+      
+      // 关闭移动端菜单
+      navLinks.classList.remove('show');
+      menuBtn.textContent = '😜';
+      
+      // 滚动提示
+      const tipTexts = {
+        '#home': '首页',
+        '#quotes': '班级语录',
+        '#vote': '趣味投票',
+        '#product': '植物培养箱',
+        '#nas-product': '飞牛NAS服务器'
+      };
+      showToast(`正在前往${tipTexts[targetId] || '未知页面'}～`, 1500);
+    }
+  });
+});
+
+// 7. Logo彩蛋交互
+logo.addEventListener('click', () => {
+  const easterEggs = [
+    "32班yyds！🚀",
+    "别点了！再点班长要罚你抄作业了😱",
+    "恭喜你发现彩蛋！奖励和老班对视10秒👀",
+    "偷偷告诉你：老师的咖啡里被加了糖🍬",
+    "32班隐藏暗号：梓辰是gay🏳️‍🌈",
+    "听说点赞的同学期末不挂科👍",
+    "在32班你就只是个萝莉🤣",
+    "点击一次，快乐翻倍～😜",
+    "飞牛NAS已解锁32班专属AI模型🤖"
+  ];
+  const randomEgg = easterEggs[Math.floor(Math.random() * easterEggs.length)];
+  
+  // 显示彩蛋Toast
+  showToast(randomEgg, 3000);
+});
+
+// 8. 自定义Toast工具函数（替代原生alert）
+function showToast(message, duration = 2000) {
+  // 创建Toast元素
+  const toast = document.createElement('div');
+  toast.className = 'custom-toast';
+  toast.textContent = message;
+  
+  // 添加到页面
+  document.body.appendChild(toast);
+  
+  // 定时移除
+  setTimeout(() => {
+    toast.remove();
+  }, duration);
+}
+</script>
+
+</body>
+</html>
