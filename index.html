@@ -3,21 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>南安一中32班 - 搞怪大本营</title>
+    <title>南安一中32班</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Comic Sans MS", "幼圆", sans-serif;
+            font-family: "Microsoft YaHei", sans-serif;
         }
 
         body {
-            background-color: #fcf0f5;
-            background-image: url('https://picsum.photos/id/175/1920/1080');
-            background-attachment: fixed;
-            background-size: cover;
-            background-blend-mode: soft-light;
+            background-color: #f8f9fa;
             min-height: 100vh;
             padding-bottom: 20px;
             opacity: 0;
@@ -25,19 +21,12 @@
         }
 
         nav {
-            background-color: #ff6b8b;
+            background-color: #4a6cf7;
             padding: 1rem 5%;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 4px 12px rgba(255, 107, 139, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        /* 导航栏滚动收缩效果 */
-        nav.scroll {
-            padding: 0.5rem 5%;
-            background-color: #ff6b8bdd;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .nav-container {
@@ -48,21 +37,13 @@
 
         .logo {
             color: white;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: bold;
             text-decoration: none;
-            text-shadow: 2px 2px 4px #ff4757;
-            padding: 5px 10px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover {
-            transform: scale(1.05) rotate(2deg);
         }
 
         .logo span {
-            color: #fff200;
+            color: #ffcc00;
         }
 
         .nav-links {
@@ -71,556 +52,223 @@
         }
 
         .nav-links li {
-            margin-left: 2rem;
-            position: relative;
+            margin-left: 1.5rem;
         }
 
         .nav-links a {
             color: white;
             text-decoration: none;
-            font-size: 1.1rem;
-            transition: all 0.3s;
+            font-size: 1rem;
         }
 
         .nav-links a:hover {
-            color: #fff200;
-            transform: scale(1.1);
-        }
-
-        /* 导航链接下划线动画 */
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background-color: #fff200;
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
+            color: #ffcc00;
         }
 
         .menu-btn {
             display: none;
             color: white;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             cursor: pointer;
-            padding: 5px;
-            transition: transform 0.2s ease;
-        }
-
-        .menu-btn:active {
-            transform: scale(0.9);
         }
 
         .hero {
-            padding: 6rem 5%;
+            padding: 4rem 5%;
             text-align: center;
-            color: #2f3542;
-            background-color: rgba(255, 255, 255, 0.85);
+            background: white;
             margin: 2rem 5%;
-            border-radius: 20px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-            border: 3px dashed #ff6b8b;
-            transition: transform 0.5s ease;
-        }
-
-        .hero:hover {
-            transform: scale(1.01);
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 2.2rem;
             margin-bottom: 1rem;
-            color: #ff6b8b;
-            text-shadow: 3px 3px 0 #fff200;
-            transform: rotate(-2deg);
-            display: inline-block;
-            transform-origin: center;
-            animation: bounce 2s infinite alternate;
-        }
-
-        /* 标题弹跳动画 */
-        @keyframes bounce {
-            from { transform: rotate(-2deg) scale(1); }
-            to { transform: rotate(-2deg) scale(1.05); }
+            color: #4a6cf7;
         }
 
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.8;
-        }
-
-        .class-slogan {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #ff4757;
-            margin: 1rem 0;
-            animation: shake 3s infinite;
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
+            font-size: 1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.6;
         }
 
         .btn {
-            background-color: #ff6b8b;
+            background-color: #4a6cf7;
             color: white;
-            padding: 1rem 2.5rem;
+            padding: 0.7rem 1.8rem;
             border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
+            border-radius: 6px;
+            font-size: 1rem;
             cursor: pointer;
             text-decoration: none;
-            transition: all 0.3s;
-            font-weight: bold;
-            box-shadow: 0 4px 0 #ff4757;
             display: inline-block;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* 按钮点击波纹效果 */
-        .btn::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255,255,255,0.3);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s ease, height 0.6s ease;
-        }
-
-        .btn:active::after {
-            width: 300px;
-            height: 300px;
-            opacity: 0;
         }
 
         .btn:hover {
-            background-color: #ff4757;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 0 #ff3838;
-        }
-
-        .btn:active {
-            transform: translateY(1px);
-            box-shadow: 0 2px 0 #ff3838;
+            background-color: #3a5ce7;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.8rem;
-            margin-bottom: 2rem;
-            color: #ff6b8b;
-            text-shadow: 2px 2px 0 #fff200;
-            transition: all 0.3s ease;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #4a6cf7;
         }
 
-        .section-title:hover {
-            transform: scale(1.05);
+        .products {
+            padding: 3rem 5%;
         }
 
-        .quotes {
-            padding: 4rem 5%;
-            margin: 2rem 0;
-        }
-
-        .quotes-container {
-            background-color: rgba(255, 255, 255, 0.9);
+        .products-container {
+            background: white;
             padding: 2rem;
-            border-radius: 20px;
-            border: 3px dashed #ff6b8b;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        .quote-card {
+        .product-card {
             padding: 1.5rem;
             margin-bottom: 1.5rem;
-            border-left: 5px solid #fff200;
-            background-color: #fff8e1;
-            border-radius: 10px;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
+            border-radius: 8px;
+            background: #f8f9ff;
+            border-left: 4px solid #4a6cf7;
         }
 
-        /* 语录卡片hover发光效果 */
-        .quote-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,242,0,0.2), transparent);
-            transition: left 0.8s ease;
-        }
-
-        .quote-card:hover::before {
-            left: 100%;
-        }
-
-        .quote-card:hover {
-            transform: translateX(10px) scale(1.02);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .quote-card p {
+        .product-card h3 {
+            color: #4a6cf7;
+            margin-bottom: 0.8rem;
             font-size: 1.2rem;
-            color: #2f3542;
-            line-height: 1.8;
         }
 
-        .quote-card .author {
-            text-align: right;
-            font-weight: bold;
-            color: #ff6b8b;
-            margin-top: 0.5rem;
-        }
-
-        .vote {
-            padding: 4rem 5%;
-            margin: 2rem 0;
-        }
-
-        .vote-container {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 2rem;
-            border-radius: 20px;
-            border: 3px dashed #ff6b8b;
-        }
-
-        .vote-item {
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            background-color: #f8f9fa;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-        }
-
-        /* 投票选项选中效果 */
-        .vote-item.selected {
-            background-color: #ffebee;
-            border-color: #ff6b8b;
-        }
-
-        .vote-item:hover {
-            background-color: #ffebee;
-            transform: translateY(-2px);
-        }
-
-        .vote-item label {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            font-size: 1.1rem;
-            flex-wrap: wrap;
-        }
-
-        .vote-item input {
-            margin-right: 1rem;
-            width: 1.2rem;
-            height: 1.2rem;
-            accent-color: #ff6b8b;
-            cursor: pointer;
-        }
-
-        #voteResult {
-            margin-top: 1.5rem;
-            padding: 1rem;
-            background-color: #fff200;
-            border-radius: 10px;
-            text-align: center;
-            font-weight: bold;
-            color: #2f3542;
-            display: none;
-            animation: fadeIn 0.5s ease-in-out, bounce 1s infinite alternate;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* 植物培养箱样式 */
-        .product {
-            padding: 4rem 5%;
-            margin: 2rem 0;
-        }
-
-        .product-container {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 2rem;
-            border-radius: 20px;
-            border: 3px dashed #ff6b8b;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .product-info {
-            width: 100%;
-            max-width: 800px;
-        }
-
-        .product-info h3 {
-            font-size: 2rem;
-            color: #ff6b8b;
-            margin-bottom: 1.5rem;
-            text-shadow: 1px 1px 0 #fff200;
-            text-align: center;
-        }
-
-        .product-features {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-
-        .product-features li {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-            position: relative;
+        .product-card p {
+            color: #666;
             line-height: 1.6;
-        }
-
-        .product-features li::before {
-            content: '🌱';
-            position: absolute;
-            left: 0;
-            top: 2px;
-        }
-
-        .product-specs {
-            background-color: #f0fff4;
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 5px solid #36d399;
-            margin-bottom: 1.5rem;
-        }
-
-        .product-specs h4 {
-            color: #22c55e;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
-
-        .product-funny {
-            background-color: #fff8e6;
-            padding: 1rem;
-            border-radius: 10px;
-            border-left: 5px solid #f59e0b;
-            font-size: 1.1rem;
-            color: #7c2d12;
-            font-weight: bold;
-            margin-bottom: 1.5rem;
-        }
-
-        /* 飞牛NAS服务器样式 */
-        .nas-product {
-            padding: 4rem 5%;
-            margin: 2rem 0;
-        }
-
-        .nas-container {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 2rem;
-            border-radius: 20px;
-            border: 3px dashed #4ade80;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .nas-info {
-            width: 100%;
-            max-width: 800px;
-        }
-
-        .nas-info h3 {
-            font-size: 2rem;
-            color: #22c55e;
-            margin-bottom: 1.5rem;
-            text-shadow: 1px 1px 0 #a7f3d0;
-            text-align: center;
-        }
-
-        .nas-features {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-
-        .nas-features li {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-            position: relative;
-            line-height: 1.6;
-        }
-
-        .nas-features li::before {
-            content: '🖥️';
-            position: absolute;
-            left: 0;
-            top: 2px;
-        }
-
-        .nas-specs {
-            background-color: #eff6ff;
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 5px solid #3b82f6;
-            margin-bottom: 1.5rem;
-        }
-
-        .nas-specs h4 {
-            color: #2563eb;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
-
-        footer {
-            background-color: #ff6b8b;
-            color: white;
-            text-align: center;
-            padding: 2rem 5%;
-            margin-top: 3rem;
-            border-top: 5px solid #fff200;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-            transition: all 0.3s ease;
-        }
-
-        footer:hover {
-            background-color: #ff4757;
-        }
-
-        footer p {
-            font-size: 1.1rem;
             margin-bottom: 0.5rem;
         }
 
-        .class-info {
-            font-weight: bold;
-            color: #fff200;
+        .classmates {
+            padding: 3rem 5%;
         }
 
-        .loader {
-            display: none;
-            border: 4px solid #ff6b8b;
-            border-top: 4px solid #fff200;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 1rem;
+        .classmates-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .classmate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1rem;
         }
 
-        /* 自定义Toast样式 */
-        .custom-toast {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #ff6b8b;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            z-index: 9999;
-            font-size: 1.2rem;
+        .classmate-card {
+            background: #f8f9ff;
+            border-radius: 8px;
+            padding: 1rem;
             text-align: center;
-            animation: toastPop 0.3s ease-in-out, toastFade 0.3s ease-in-out 2.7s forwards;
         }
 
-        @keyframes toastPop {
-            from { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
-            to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        .classmate-name {
+            font-weight: bold;
+            color: #4a6cf7;
         }
 
-        @keyframes toastFade {
-            to { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+        .scores {
+            padding: 3rem 5%;
+        }
+
+        .scores-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .score-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .score-table th,
+        .score-table td {
+            padding: 0.8rem;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            white-space: nowrap;
+        }
+
+        .score-table th {
+            background-color: #4a6cf7;
+            color: white;
+            position: sticky;
+            top: 0;
+        }
+
+        .timetable {
+            padding: 3rem 5%;
+        }
+
+        .timetable-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .timetable-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .timetable-table th {
+            background-color: #4a6cf7;
+            color: white;
+            padding: 0.8rem;
+        }
+
+        .timetable-table td {
+            padding: 0.8rem;
+            text-align: center;
+            border: 1px solid #eee;
+        }
+
+        footer {
+            background-color: #4a6cf7;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 5%;
+            margin-top: 2rem;
         }
 
         @media (max-width: 768px) {
             .menu-btn {
                 display: block;
             }
-
             .nav-links {
+                display: none;
+                flex-direction: column;
                 position: absolute;
                 top: 100%;
                 left: 0;
                 right: 0;
-                background-color: #ff6b8b;
-                flex-direction: column;
+                background: #4a6cf7;
                 padding: 1rem 5%;
-                display: none;
-                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-                animation: menuSlide 0.3s ease-in-out;
             }
-
-            @keyframes menuSlide {
-                from { transform: translateY(-20px); opacity: 0; }
-                to { transform: translateY(0); opacity: 1; }
-            }
-
             .nav-links.show {
                 display: flex;
             }
-
             .nav-links li {
-                margin: 1rem 0;
-                margin-left: 0;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-                transform: rotate(-1deg);
-            }
-
-            .section-title {
-                font-size: 2.2rem;
-            }
-
-            .btn {
-                padding: 0.8rem 2rem;
-                font-size: 1rem;
-                display: block;
-                margin: 0 auto;
-                width: fit-content;
-            }
-
-            .quotes-container, .vote-container {
-                padding: 1.5rem 1rem;
-            }
-            
-            .product-info h3, .nas-info h3 {
-                font-size: 1.6rem;
-            }
-            
-            .product-features li, .nas-features li {
-                font-size: 1.1rem;
+                margin: 0.8rem 0;
             }
         }
     </style>
@@ -629,327 +277,199 @@
 
 <nav id="mainNav">
   <div class="nav-container">
-    <div class="logo" id="logo">南安一中<span>32</span>班</div>
-    <div class="menu-btn" id="menuBtn">😜</div>
+    <div class="logo">南安一中<span>32</span>班</div>
+    <div class="menu-btn" id="menuBtn">三</div>
     <ul class="nav-links" id="navLinks">
       <li><a href="#home">首页</a></li>
-      <li><a href="#quotes">班级语录</a></li>
-      <li><a href="#vote">趣味投票</a></li>
-      <li><a href="#product">植物培养箱</a></li> 
-      <li><a href="#nas-product">飞牛NAS服务器</a></li>
+      <li><a href="#products">产品介绍</a></li>
+      <li><a href="#classmates">同学目录</a></li>
+      <li><a href="#scores">成绩查询</a></li>
+      <li><a href="#timetable">课程表</a></li>
     </ul>
   </div>
 </nav>
 
 <section class="hero" id="home">
-  <h1>在32班你就只是个萝莉</h1>
-  <p>这里是南安一中32班的专属搞怪阵地，记录我们的沙雕日常、爆笑瞬间和那些年一起说过的梗～</p>
-  <div class="class-slogan">32班出品，必属精品！不疯魔，不成活！</div>
-  <a href="#quotes" class="btn">查看班级语录 💬</a>
+  <h1>南安一中32班班级主页</h1>
+  <p>本班主页用于展示班级信息、同学名单、课程安排与成绩查询。</p>
+  <a href="#classmates" class="btn">查看同学目录</a>
 </section>
 
-<section class="quotes" id="quotes">
-  <h2 class="section-title">💬 32班经典语录</h2>
-  <div class="quotes-container">
-    <div class="quote-card">
-      <p>"这道题我会！等等，让我先算错一遍给你们看看反面教材。"</p>
-      <p class="author">—— 建鑫</p>
+<section class="products" id="products">
+  <h2 class="section-title">产品介绍</h2>
+  <div class="products-container">
+    <div class="product-card">
+      <h3>飞牛NAS</h3>
+      <p>飞牛NAS是一款高性能的网络存储设备，具备大容量、高稳定性、低功耗的特点。支持多设备同步、远程访问、数据备份与共享，可轻松搭建私人云存储系统，为各类数据（包括植物培养箱的监控数据、灌溉日志等）提供安全可靠的存储解决方案。</p>
+      <p>同时支持挂载青龙面板脚本，实现存储与自动化控制的无缝衔接，满足植物培养箱数据存储与自动化管理的双重需求。</p>
     </div>
-    <div class="quote-card">
-      <p>"老师，我作业忘带了，但我保证它在我书包里，只是书包忘在家里了。"</p>
-      <p class="author">—— 书雄</p>
+    <div class="product-card">
+      <h3>植物培养箱</h3>
+      <p>植物培养箱是一款智能化的植物培育设备，具备精准控温、控湿、控光、通风调节功能，可模拟不同环境条件下的生长环境，适用于各类植物的育苗、组培、生长试验等场景。</p>
+      <p>设备支持外接传感器实时监测土壤湿度、营养液浓度、环境CO₂浓度等关键参数，为自动化灌溉和AI管控提供数据基础。</p>
     </div>
-    <div class="quote-card">
-      <p>"再睡五分钟，就五分钟，绝对不迟到！"</p>
-      <p class="author">—— 每天踩点进教室的国云</p>
+    <div class="product-card">
+      <h3>青龙面板全自动灌溉</h3>
+      <p>青龙面板是一款可视化的脚本管理工具，通过配置自定义脚本，可实现植物培养箱的全自动灌溉控制。根据预设的时间周期、土壤湿度阈值等条件，自动触发灌溉泵启停，精准控制灌溉水量和频率，无需人工干预。</p>
+      <p>脚本可读取飞牛NAS存储的历史数据，动态调整灌溉策略，适配不同植物的生长需求，同时记录灌溉日志便于追溯分析。</p>
     </div>
-    <div class="quote-card">
-      <p>"32班的目标：没有第一！哦不对，是没有倒数第一！"</p>
-      <p class="author">—— 梓晨</p>
-    </div>
-    <div class="quote-card">
-      <p>"体育课才是主课，其他都是副课！"</p>
-      <p class="author">—— 锦阳</p>
+    <div class="product-card">
+      <h3>OALLM千问AI接管植物培养箱</h3>
+      <p>OALLM千问AI可全面接管植物培养箱的运行管控，基于海量植物生长数据和实时监测的环境参数，通过AI算法智能调整温度、湿度、光照、灌溉、通风等所有运行参数。</p>
+      <p>具备自主学习能力，可根据植物生长状态动态优化培育方案，识别异常生长情况并自动调整管控策略，同时可通过飞牛NAS调取历史数据进行生长趋势分析，实现植物培养的全流程智能化、无人化管理。</p>
     </div>
   </div>
 </section>
 
-<section class="vote" id="vote">
-  <h2 class="section-title">🗳️ 32班趣味投票</h2>
-  <div class="vote-container">
-    <form id="voteForm">
-      <div class="vote-item">
-        <label><input type="radio" name="classVote" value="钰玲"> 班里的"睡神"是谁？（钰玲）</label>
-      </div>
-      <div class="vote-item">
-        <label><input type="radio" name="classVote" value="锦阳"> 班里的"篮球大神"是谁？（锦阳）</label>
-      </div>
-      <div class="vote-item">
-        <label><input type="radio" name="classVote" value="书雄"> 班里的"梗王"是谁？（书雄）</label>
-      </div>
-      <div class="vote-item">
-        <label><input type="radio" name="classVote" value="国云"> 班里的"迟到专业户"是谁？（国云）</label>
-      </div>
-      <div class="vote-item">
-        <label><input type="radio" name="classVote" value="君翔"> （君翔）</label>
-      </div>
-      <div class="vote-item">
-        <label><input type="radio" name="classVote" value="建鑫"> （建鑫）</label>
-      </div>
-      <div class="vote-item">
-        <label><input type="radio" name="classVote" value="班长"> （班长）</label>
-      </div>
-      <div class="vote-item">
-        <label><input type="radio" name="classVote" value="我不想说"> （你猜）</label>
-      </div>
-      <div class="vote-item">
-        <label><input type="radio" name="classVote" value="老班"> </label>
-      </div>
-      
-      <div class="loader" id="loader"></div>
-      <button type="submit" class="btn">提交投票 🎉</button>
-    </form>
-    <div id="voteResult"></div>
-  </div>
-</section>
-
-<!-- 植物培养箱产品介绍板块（已删除图片和购买相关） -->
-<section class="product" id="product">
-  <h2 class="section-title">🌿 植物培养箱 - 32班专属款</h2>
-  <div class="product-container">
-    <div class="product-info">
-      <h3>智能植物培养箱 Pro Max</h3>
-      <ul class="product-features">
-        <li>🌡️ 智能温控：10-40℃精准调节，不怕冬天冷夏天热</li>
-        <li>💡 全光谱LED灯：模拟太阳光，植物长得比32班同学还快</li>
-        <li>💧 自动浇水：懒癌患者福音，一周不浇水也不怕</li>
-        <li>🔄 循环通风：空气流通不闷根，告别烂叶子</li>
-        <li>📱 青龙控制：自动调参数（对接飞牛NAS）</li>
-        <li>🔋 断电续航：突然停电？培养箱比32班同学还坚挺</li>
-      </ul>
-      
-      <div class="product-specs">
-        <h4>📊 产品参数</h4>
-        <p>尺寸：60×45×80cm | 功率：80W | 容量：120L | 材质：泡沫</p>
-      </div>
-      
-      <div class="product-funny">
-        专属彩蛋：培养箱内置AI，可通过飞牛NAS的OAMLL大模型智能分析植物生长状态
-      </div>
-      
-      <a href="#nas-product" class="btn">查看联动NAS 📡</a>
+<section class="classmates" id="classmates">
+  <h2 class="section-title">全班同学目录（42人）</h2>
+  <div class="classmates-container">
+    <div class="classmate-grid">
+      <div class="classmate-card"><div class="classmate-name">1 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">2 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">3 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">4 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">5 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">6 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">7 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">8 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">9 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">10 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">11 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">12 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">13 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">14 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">15 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">16 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">17 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">18 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">19 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">20 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">21 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">22 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">23 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">24 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">25 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">26 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">27 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">28 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">29 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">30 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">31 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">32 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">33 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">34 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">35 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">36 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">37 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">38 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">39 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">40 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">41 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">42 未定</div></div>
     </div>
   </div>
 </section>
 
-<!-- 飞牛NAS服务器产品板块（已删除图片和购买相关） -->
-<section class="nas-product" id="nas-product">
-  <h2 class="section-title">🖥️ 飞牛NAS服务器 - 智能控制中枢</h2>
-  <div class="nas-container">
-    <div class="nas-info">
-      <h3>飞牛NAS Mini Pro - 32班定制版</h3>
-      <ul class="nas-features">
-        <li>🐉 青龙面板：定时执行培养箱指令，比班长还准时</li>
-        <li>🤖 OAMLL大模型：智能分析植物数据，生成专属生长方案</li>
-        <li>🔗 设备绑定：一键联动植物培养箱，数据实时同步</li>
-        <li>💾 海量存储：存下32班所有表情包+植物生长日志</li>
-        <li>🌐 远程控制：上课偷偷调培养箱参数，老班发现不了</li>
-        <li>🔒 32班专属加密：防止隔壁班偷用我们的AI方案</li>
-      </ul>
-      
-      <div class="nas-specs">
-        <h4>📊 NAS参数</h4>
-        <p>CPU：四核ARM | 内存：4GB | 存储：8TB | 接口：千兆网口×2 + USB3.0×2 | 系统：青龙OS定制版</p>
-      </div>
-    </div>
+<section class="scores" id="scores">
+  <h2 class="section-title">成绩查询（7科）</h2>
+  <div class="scores-container">
+    <table class="score-table">
+      <tr>
+        <th>姓名</th>
+        <th>语文</th>
+        <th>数学</th>
+        <th>英语</th>
+        <th>道法</th>
+        <th>生物</th>
+        <th>地理</th>
+        <th>历史</th>
+      </tr>
+      <tr><td>1 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>2 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>3 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>4 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>5 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>6 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>7 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>8 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>9 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>10 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>11 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>12 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>13 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>14 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>15 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>16 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>17 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>18 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>19 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>20 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>21 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>22 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>23 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>24 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>25 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>26 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>27 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>28 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>29 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>30 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>31 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>32 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>33 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>34 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>35 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>36 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>37 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>38 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>39 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>40 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>41 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>42 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="timetable" id="timetable">
+  <h2 class="section-title">课程表（每天8节）</h2>
+  <div class="timetable-container">
+    <table class="timetable-table">
+      <tr>
+        <th>节次</th>
+        <th>周一</th>
+        <th>周二</th>
+        <th>周三</th>
+        <th>周四</th>
+        <th>周五</th>
+      </tr>
+      <tr><td>1</td><td>语文</td><td>语文</td><td>语文</td><td>语文</td><td>英语</td></tr>
+      <tr><td>2</td><td>英语</td><td>体育</td><td>数学</td><td>数学</td><td>数学</td></tr>
+      <tr><td>3</td><td>数学</td><td>英语</td><td>英语</td><td>英语</td><td>语文</td></tr>
+      <tr><td>4</td><td>数学</td><td>数学</td><td>英语</td><td>体育</td><td>语文</td></tr>
+      <tr><td>5</td><td>道法</td><td>生物</td><td>音乐</td><td>生物</td><td>地理</td></tr>
+      <tr><td>6</td><td>体育</td><td>道法</td><td>历史</td><td>地理</td><td>体育</td></tr>
+      <tr><td>7</td><td>历史</td><td>地理</td><td>班会</td><td>心理</td><td>英语</td></tr>
+      <tr><td>8</td><td>地理</td><td>政治</td><td>生物</td><td>历史</td><td>语文</td></tr>
+    </table>
   </div>
 </section>
 
 <footer>
-  <p class="class-info">南安一中32班 - 搞怪永不打烊 🎉</p>
-  <p>制作于2026年 | 班级专属，禁止外传（偷偷看也没事😜）</p>
+  <p>南安一中32班 · 班级主页</p>
+  <p>2026</p>
 </footer>
 
 <script>
-// 核心元素获取
+window.addEventListener('load', () => {
+  document.body.style.opacity = 1;
+});
+
 const menuBtn = document.getElementById('menuBtn');
 const navLinks = document.getElementById('navLinks');
-const logo = document.getElementById('logo');
-const voteForm = document.getElementById('voteForm');
-const voteResult = document.getElementById('voteResult');
-const loader = document.getElementById('loader');
-const mainNav = document.getElementById('mainNav');
-const voteItems = document.querySelectorAll('.vote-item');
-
-// 1. 页面加载完成动画
-window.addEventListener('load', () => {
-  document.body.style.opacity = '1';
-  
-  // 欢迎Toast
-  showToast('欢迎来到32班搞怪大本营！🎉', 3000);
-});
-
-// 2. 导航栏滚动效果
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) {
-    mainNav.classList.add('scroll');
-  } else {
-    mainNav.classList.remove('scroll');
-  }
-});
-
-// 3. 移动端菜单交互
 menuBtn.addEventListener('click', () => {
   navLinks.classList.toggle('show');
-  menuBtn.textContent = navLinks.classList.contains('show') ? '❌' : '😜';
-  
-  // 菜单切换提示
-  showToast(navLinks.classList.contains('show') ? '菜单已打开～' : '菜单已关闭～', 1000);
 });
-
-// 4. 投票选项选中高亮
-voteItems.forEach(item => {
-  const radio = item.querySelector('input[type="radio"]');
-  
-  radio.addEventListener('change', () => {
-    // 清除所有选中样式
-    voteItems.forEach(i => i.classList.remove('selected'));
-    // 给当前选中项加样式
-    item.classList.add('selected');
-  });
-  
-  // 点击选项也选中
-  item.addEventListener('click', () => {
-    radio.checked = true;
-    voteItems.forEach(i => i.classList.remove('selected'));
-    item.classList.add('selected');
-  });
-});
-
-// 5. 投票提交交互
-voteForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const selectedOption = document.querySelector('input[name="classVote"]:checked');
-  
-  if (!selectedOption) {
-    const tips = [
-      "选一个再投嘛～不然怎么知道谁是32班的隐藏大佬😜",
-      "别偷懒！不选的话罚你给全班带零食🍟",
-      "快选快选！晚了就投不了啦～",
-      "不投票？小心被老班点名哦😱"
-    ];
-    showToast(tips[Math.floor(Math.random() * tips.length)], 2000);
-    return;
-  }
-
-  // 显示加载动画
-  loader.style.display = 'block';
-  
-  // 模拟加载延迟
-  setTimeout(() => {
-    const results = {
-      "钰玲": "恭喜！你投给了班里的睡神钰玲～这位同学已经成功解锁「上课睡觉不被抓」成就！",
-      "锦阳": "花心大萝贝😜",
-      "书雄": "不愧是梗王书雄！32班的快乐源泉就是你✨～",
-      "国云": "迟到但不缺席，国云是个蛋🥚",
-      "君翔": "将思恋化老鼠🐭",
-      "建鑫": "解题鬼才建鑫！就算算错也能把你讲懵😎",
-      "班长": "传奇耐操王💪",
-      "我不想说": "全班最拉的拉拉🚜",
-      "老班": "老班还是太权威了👑"
-    };
-
-    // 隐藏加载动画，显示结果
-    loader.style.display = 'none';
-    voteResult.style.display = 'block';
-    voteResult.textContent = results[selectedOption.value];
-    voteResult.scrollIntoView({ behavior: 'smooth' });
-
-    // 禁用所有投票选项
-    document.querySelectorAll('input[name="classVote"]').forEach(radio => {
-      radio.disabled = true;
-    });
-    
-    // 按钮状态修改
-    const submitBtn = voteForm.querySelector('.btn');
-    submitBtn.textContent = "已投票 ✅";
-    submitBtn.disabled = true;
-    submitBtn.style.backgroundColor = '#ccc';
-    submitBtn.style.boxShadow = 'none';
-    submitBtn.style.cursor = 'not-allowed';
-    
-    // 投票成功提示
-    showToast('投票成功！感谢你的参与～🎊', 2000);
-  }, 800);
-});
-
-// 6. 平滑滚动导航
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href');
-    const targetElement = document.querySelector(targetId);
-    
-    if (targetElement) {
-      // 平滑滚动
-      window.scrollTo({
-        top: targetElement.offsetTop - 80,
-        behavior: 'smooth'
-      });
-      
-      // 关闭移动端菜单
-      navLinks.classList.remove('show');
-      menuBtn.textContent = '😜';
-      
-      // 滚动提示
-      const tipTexts = {
-        '#home': '首页',
-        '#quotes': '班级语录',
-        '#vote': '趣味投票',
-        '#product': '植物培养箱',
-        '#nas-product': '飞牛NAS服务器'
-      };
-      showToast(`正在前往${tipTexts[targetId] || '未知页面'}～`, 1500);
-    }
-  });
-});
-
-// 7. Logo彩蛋交互
-logo.addEventListener('click', () => {
-  const easterEggs = [
-    "32班yyds！🚀",
-    "别点了！再点班长要罚你抄作业了😱",
-    "恭喜你发现彩蛋！奖励和老班对视10秒👀",
-    "偷偷告诉你：老师的咖啡里被加了糖🍬",
-    "32班隐藏暗号：梓辰是gay🏳️‍🌈",
-    "听说点赞的同学期末不挂科👍",
-    "在32班你就只是个萝莉🤣",
-    "点击一次，快乐翻倍～😜",
-    "飞牛NAS已解锁32班专属AI模型🤖"
-  ];
-  const randomEgg = easterEggs[Math.floor(Math.random() * easterEggs.length)];
-  
-  // 显示彩蛋Toast
-  showToast(randomEgg, 3000);
-});
-
-// 8. 自定义Toast工具函数（替代原生alert）
-function showToast(message, duration = 2000) {
-  // 创建Toast元素
-  const toast = document.createElement('div');
-  toast.className = 'custom-toast';
-  toast.textContent = message;
-  
-  // 添加到页面
-  document.body.appendChild(toast);
-  
-  // 定时移除
-  setTimeout(() => {
-    toast.remove();
-  }, duration);
-}
 </script>
-
 </body>
-
 </html>
