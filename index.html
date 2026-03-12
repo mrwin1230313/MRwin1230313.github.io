@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>南安一中32班搞怪阵地</title>
-  <!-- 百度统计代码（正确位置） -->
+  <!-- 百度统计代码 -->
   <script>
   var _hmt = _hmt || [];
   (function() {
@@ -122,6 +122,14 @@
       background-color: #3a5ce7;
     }
 
+    .btn-danger {
+      background-color: #ff4d4f;
+    }
+
+    .btn-danger:hover {
+      background-color: #ff2b2d;
+    }
+
     .section-title {
       text-align: center;
       font-size: 1.8rem;
@@ -129,11 +137,11 @@
       color: #4a6cf7;
     }
 
-    .products {
+    .products, .classmates, .scores, .timetable, .draw-system {
       padding: 3rem 5%;
     }
 
-    .products-container {
+    .products-container, .classmates-container, .scores-container, .timetable-container, .draw-container {
       background: white;
       padding: 2rem;
       border-radius: 12px;
@@ -160,17 +168,6 @@
       margin-bottom: 0.5rem;
     }
 
-    .classmates {
-      padding: 3rem 5%;
-    }
-
-    .classmates-container {
-      background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-
     .classmate-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -189,20 +186,12 @@
       color: #4a6cf7;
     }
 
-    .scores {
-      padding: 3rem 5%;
-    }
-
     .scores-container {
-      background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
       max-height: 500px;
       overflow-y: auto;
     }
 
-    .score-table {
+    .score-table, .timetable-table {
       width: 100%;
       border-collapse: collapse;
       background: white;
@@ -210,47 +199,48 @@
       overflow: hidden;
     }
 
-    .score-table th,
-    .score-table td {
+    .score-table th, .score-table td, .timetable-table th, .timetable-table td {
       padding: 0.8rem;
       text-align: center;
       border-bottom: 1px solid #eee;
       white-space: nowrap;
     }
 
-    .score-table th {
+    .score-table th, .timetable-table th {
       background-color: #4a6cf7;
       color: white;
       position: sticky;
       top: 0;
     }
 
-    .timetable {
-      padding: 3rem 5%;
-    }
-
-    .timetable-container {
-      background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-
-    .timetable-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .timetable-table th {
-      background-color: #4a6cf7;
-      color: white;
-      padding: 0.8rem;
-    }
-
     .timetable-table td {
-      padding: 0.8rem;
-      text-align: center;
       border: 1px solid #eee;
+    }
+
+    .draw-box {
+      text-align: center;
+      padding: 2rem;
+      margin: 1rem 0;
+      border-radius: 8px;
+      background: #f8f9ff;
+      border: 2px dashed #4a6cf7;
+    }
+
+    .draw-result {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #4a6cf7;
+      margin: 1.5rem 0;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .draw-tips {
+      color: #666;
+      margin-top: 1rem;
+      font-size: 0.9rem;
     }
 
     footer {
@@ -281,6 +271,9 @@
       .nav-links li {
         margin: 0.8rem 0;
       }
+      .draw-result {
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -296,14 +289,15 @@
       <li><a href="#classmates">同学目录</a></li>
       <li><a href="#scores">成绩查询</a></li>
       <li><a href="#timetable">课程表</a></li>
+      <li><a href="#draw-system">抽人系统</a></li>
     </ul>
   </div>
 </nav>
 
 <section class="hero" id="home">
   <h1>南安一中32班班级主页</h1>
-  <p>本班主页用于展示班级信息、同学名单、课程安排与成绩查询。</p>
-  <a href="#classmates" class="btn">查看同学目录</a>
+  <p>本班主页用于展示班级信息、同学名单、课程安排与成绩查询，新增抽人系统功能！</p>
+  <a href="#draw-system" class="btn">进入抽人系统</a>
 </section>
 
 <section class="products" id="products">
@@ -336,48 +330,48 @@
   <h2 class="section-title">全班同学目录（42人）</h2>
   <div class="classmates-container">
     <div class="classmate-grid">
-      <div class="classmate-card"><div class="classmate-name">1 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">2 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">3 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">4 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">5 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">6 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">7 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">8 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">9 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">10 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">11 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">12 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">13 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">14 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">15 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">16 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">17 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">18 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">19 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">20 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">21 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">22 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">23 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">24 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">25 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">26 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">27 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">28 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">29 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">30 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">31 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">32 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">33 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">34 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">35 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">36 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">37 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">38 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">39 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">40 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">41 未定</div></div>
-      <div class="classmate-card"><div class="classmate-name">42 未定</div></div>
+      <div class="classmate-card"><div class="classmate-name">1 常博闻</div></div>
+      <div class="classmate-card"><div class="classmate-name">2 傅恺峰</div></div>
+      <div class="classmate-card"><div class="classmate-name">3 洪晨熙</div></div>
+      <div class="classmate-card"><div class="classmate-name">4 黄博凯</div></div>
+      <div class="classmate-card"><div class="classmate-name">5 黄财鑫</div></div>
+      <div class="classmate-card"><div class="classmate-name">6 黄超亿</div></div>
+      <div class="classmate-card"><div class="classmate-name">7 黄德祺</div></div>
+      <div class="classmate-card"><div class="classmate-name">8 黄国云</div></div>
+      <div class="classmate-card"><div class="classmate-name">9 黄佳鹏</div></div>
+      <div class="classmate-card"><div class="classmate-name">10 黄建鑫</div></div>
+      <div class="classmate-card"><div class="classmate-name">11 黄锦阳</div></div>
+      <div class="classmate-card"><div class="classmate-name">12 黄君翔</div></div>
+      <div class="classmate-card"><div class="classmate-name">13 黄泷瑾</div></div>
+      <div class="classmate-card"><div class="classmate-name">14 黄书雄</div></div>
+      <div class="classmate-card"><div class="classmate-name">15 黄伟诚</div></div>
+      <div class="classmate-card"><div class="classmate-name">16 黄伟政</div></div>
+      <div class="classmate-card"><div class="classmate-name">17 黄一杰</div></div>
+      <div class="classmate-card"><div class="classmate-name">18 黄裕舜</div></div>
+      <div class="classmate-card"><div class="classmate-name">19 黄煜轩</div></div>
+      <div class="classmate-card"><div class="classmate-name">20 黄子毅</div></div>
+      <div class="classmate-card"><div class="classmate-name">21 黄梓辰</div></div>
+      <div class="classmate-card"><div class="classmate-name">22 李爱飞</div></div>
+      <div class="classmate-card"><div class="classmate-name">23 黑曼巴</div></div>
+      <div class="classmate-card"><div class="classmate-name">24 林伟彬</div></div>
+      <div class="classmate-card"><div class="classmate-name">25 肖文杰</div></div>
+      <div class="classmate-card"><div class="classmate-name">26 杨宇晨</div></div>
+      <div class="classmate-card"><div class="classmate-name">27 尤恺晨</div></div>
+      <div class="classmate-card"><div class="classmate-name">28 蔡思琪</div></div>
+      <div class="classmate-card"><div class="classmate-name">29 陈昕钰</div></div>
+      <div class="classmate-card"><div class="classmate-name">30 黄冠瑜</div></div>
+      <div class="classmate-card"><div class="classmate-name">31 黄佳琳</div></div>
+      <div class="classmate-card"><div class="classmate-name">32 黄琪媛</div></div>
+      <div class="classmate-card"><div class="classmate-name">33 黄诗妍</div></div>
+      <div class="classmate-card"><div class="classmate-name">34 黄诗瑶</div></div>
+      <div class="classmate-card"><div class="classmate-name">35 黄钰玲</div></div>
+      <div class="classmate-card"><div class="classmate-name">36 黄梓晴</div></div>
+      <div class="classmate-card"><div class="classmate-name">37 李惠琳</div></div>
+      <div class="classmate-card"><div class="classmate-name">38 李梓萱</div></div>
+      <div class="classmate-card"><div class="classmate-name">39 林素雨</div></div>
+      <div class="classmate-card"><div class="classmate-name">40 肖诗娴</div></div>
+      <div class="classmate-card"><div class="classmate-name">41 肖梓怡</div></div>
+      <div class="classmate-card"><div class="classmate-name">42 张晨希</div></div>
     </div>
   </div>
 </section>
@@ -396,48 +390,48 @@
         <th>地理</th>
         <th>历史</th>
       </tr>
-      <tr><td>1 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>2 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>3 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>4 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>5 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>6 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>7 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>8 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>9 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>10 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>11 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>12 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>13 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>14 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>15 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>16 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>17 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>18 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>19 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>20 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>21 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>22 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>23 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>24 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>25 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>26 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>27 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>28 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>29 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>30 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>31 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>32 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>33 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>34 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>35 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>36 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>37 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>38 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>39 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>40 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>41 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>42 未定</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>1 常博闻</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>2 傅恺峰</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>3 洪晨熙</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>4 黄博凯</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>5 黄财鑫</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>6 黄超亿</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>7 黄德祺</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>8 黄国云</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>9 黄佳鹏</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>10 黄建鑫</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>11 黄锦阳</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>12 黄君翔</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>13 黄泷瑾</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>14 黄书雄</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>15 黄伟诚</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>16 黄伟政</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>17 黄一杰</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>18 黄裕舜</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>19 黄煜轩</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>20 黄子毅</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>21 黄梓辰</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>22 李爱飞</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>23 黑曼巴</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>24 林伟彬</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>25 肖文杰</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>26 杨宇晨</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>27 尤恺晨</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>28 蔡思琪</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>29 陈昕钰</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>30 黄冠瑜</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>31 黄佳琳</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>32 黄琪媛</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>33 黄诗妍</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>34 黄诗瑶</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>35 黄钰玲</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>36 黄梓晴</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>37 李惠琳</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>38 李梓萱</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>39 林素雨</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>40 肖诗娴</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>41 肖梓怡</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>42 张晨希</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
     </table>
   </div>
 </section>
@@ -466,13 +460,34 @@
   </div>
 </section>
 
+<section class="draw-system" id="draw-system">
+  <h2 class="section-title">32班抽人系统</h2>
+  <div class="draw-container">
+    <!-- 抽人系统1：全班（含卓吾班） -->
+    <div class="draw-box">
+      <h3 style="color: #4a6cf7; margin-bottom: 1rem;">抽人系统1：全班（含卓吾班，42人）</h3>
+      <button class="btn btn-danger" onclick="drawFullClass()">点击随机抽人</button>
+      <div class="draw-result" id="fullClassResult">等待抽取...</div>
+      <p class="draw-tips">包含所有42位同学</p>
+    </div>
+
+    <!-- 抽人系统2：排除指定同学 -->
+    <div class="draw-box">
+      <h3 style="color: #4a6cf7; margin-bottom: 1rem;">抽人系统2：排除指定同学（36人）</h3>
+      <button class="btn btn-danger" onclick="drawFilteredClass()">点击随机抽人</button>
+      <div class="draw-result" id="filteredClassResult">等待抽取...</div>
+      <p class="draw-tips">排除：6黄超亿、27尤恺晨、30黄冠瑜、32黄琪媛、36黄梓晴</p>
+    </div>
+  </div>
+</section>
+
 <footer>
   <p>南安一中32班 · 班级主页</p>
   <p>2026</p>
 </footer>
 
 <script>
-// 页面加载完成后显示（解决opacity初始为0的问题）
+// 页面加载完成后显示
 window.addEventListener('load', () => {
   document.body.style.opacity = 1;
 });
@@ -483,6 +498,79 @@ const navLinks = document.getElementById('navLinks');
 menuBtn.addEventListener('click', () => {
   navLinks.classList.toggle('show');
 });
+
+// 高概率同学序号列表
+const highProbNumbers = [1,2,3,5,8,10,11,13,14,17,18,21,29,39];
+
+// 全班同学列表
+const fullClassList = [
+  "1 常博闻", "2 傅恺峰", "3 洪晨熙", "4 黄博凯", "5 黄财鑫", "6 黄超亿", 
+  "7 黄德祺", "8 黄国云", "9 黄佳鹏", "10 黄建鑫", "11 黄锦阳", "12 黄君翔", 
+  "13 黄泷瑾", "14 黄书雄", "15 黄伟诚", "16 黄伟政", "17 黄一杰", "18 黄裕舜", 
+  "19 黄煜轩", "20 黄子毅", "21 黄梓辰", "22 李爱飞", "23 黑曼巴", "24 林伟彬", 
+  "25 肖文杰", "26 杨宇晨", "27 尤恺晨", "28 蔡思琪", "29 陈昕钰", "30 黄冠瑜", 
+  "31 黄佳琳", "32 黄琪媛", "33 黄诗妍", "34 黄诗瑶", "35 黄钰玲", "36 黄梓晴", 
+  "37 李惠琳", "38 李梓萱", "39 林素雨", "40 肖诗娴", "41 肖梓怡", "42 张晨希"
+];
+
+// 排除指定同学后的列表（排除6、27、30、32、36）
+const filteredClassList = fullClassList.filter(item => {
+  const num = parseInt(item.split(' ')[0]);
+  return ![6,27,30,32,36].includes(num);
+});
+
+// 带权重的随机抽取函数
+function weightedRandomPick(list) {
+  // 构建权重列表：高概率同学权重为5，普通同学权重为1
+  let weightedList = [];
+  list.forEach(item => {
+    const num = parseInt(item.split(' ')[0]);
+    const weight = highProbNumbers.includes(num) ? 5 : 1;
+    // 根据权重重复添加，权重越高被抽到概率越大
+    for(let i=0; i<weight; i++) {
+      weightedList.push(item);
+    }
+  });
+  // 随机抽取
+  const randomIdx = Math.floor(Math.random() * weightedList.length);
+  return weightedList[randomIdx];
+}
+
+// 抽全班（带权重）
+function drawFullClass() {
+  const resultDom = document.getElementById('fullClassResult');
+  // 动画效果
+  let count = 0;
+  const timer = setInterval(() => {
+    // 动画阶段随机抽（无权重），最后一次用权重抽
+    const randomItem = count >= 19 
+      ? weightedRandomPick(fullClassList) 
+      : fullClassList[Math.floor(Math.random() * fullClassList.length)];
+    resultDom.textContent = randomItem;
+    count++;
+    if (count >= 20) {
+      clearInterval(timer);
+    }
+  }, 50);
+}
+
+// 抽过滤后的班级（带权重）
+function drawFilteredClass() {
+  const resultDom = document.getElementById('filteredClassResult');
+  // 动画效果
+  let count = 0;
+  const timer = setInterval(() => {
+    // 动画阶段随机抽（无权重），最后一次用权重抽
+    const randomItem = count >= 19 
+      ? weightedRandomPick(filteredClassList) 
+      : filteredClassList[Math.floor(Math.random() * filteredClassList.length)];
+    resultDom.textContent = randomItem;
+    count++;
+    if (count >= 20) {
+      clearInterval(timer);
+    }
+  }, 50);
+}
 </script>
 </body>
 </html>
