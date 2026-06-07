@@ -116,6 +116,7 @@
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
+      margin: 0 0.5rem;
     }
 
     .btn:hover {
@@ -128,6 +129,14 @@
 
     .btn-danger:hover {
       background-color: #ff2b2d;
+    }
+
+    /* 整蛊跳转按钮样式 */
+    .btn-prank {
+      background-color: #e63946;
+    }
+    .btn-prank:hover {
+      background-color: #c1121f;
     }
 
     .section-title {
@@ -298,6 +307,8 @@
   <h1>南安一中32班班级主页</h1>
   <p>本班主页用于展示班级信息、同学名单、课程安排与成绩查询，新增抽人系统功能！</p>
   <a href="#draw-system" class="btn">进入抽人系统</a>
+  <!-- 新增：跳转至你的年龄验证整蛊网站 -->
+  <a href="https://mrwin1230313.github.io/biadu/" target="_blank" class="btn btn-prank">趣味入口</a>
 </section>
 
 <section class="products" id="products">
