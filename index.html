@@ -1,223 +1,376 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>你点不到我~</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>南安一中32班搞怪阵地</title>
+  <!-- 百度统计代码 -->
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?8cda4adca942136dded8b2549c7aab98";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+  <!-- 样式表 -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Microsoft YaHei", sans-serif;
+    }
 
-  body {
-    height: 100vh;
-    overflow: hidden;
-    background: linear-gradient(135deg, #1e1e2f, #2b2b45, #1e1e2f);
-    background-size: 400% 400%;
-    animation: bgMove 12s ease infinite;
-    font-family: "Microsoft YaHei", sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    cursor: crosshair;
-    user-select: none;
-  }
+    body {
+      background-color: #f8f9fa;
+      min-height: 100vh;
+      padding-bottom: 20px;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+    }
 
-  @keyframes bgMove {
-    0%   { background-position: 0% 50%; }
-    50%  { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
+    nav {
+      background-color: #4a6cf7;
+      padding: 1rem 5%;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
 
-  h1 {
-    color: #fff;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    text-shadow: 0 0 12px #7b68ee;
-    animation: float 2.5s ease-in-out infinite;
-  }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-  @keyframes float {
-    0%,100% { transform: translateY(0); }
-    50%     { transform: translateY(-10px); }
-  }
+    .logo {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
 
-  #hint {
-    color: #aaa;
-    margin-top: 2rem;
-    font-size: 0.95rem;
-    height: 1.2em;
-  }
+    .logo span {
+      color: #ffcc00;
+    }
 
-  /* 逃跑按钮 */
-  #btn {
-    position: fixed;
-    padding: 16px 42px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #fff;
-    background: linear-gradient(45deg, #ff5f6d, #ffc371);
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0 8px 20px rgba(255,95,109,.5);
-    transition: transform .12s ease;
-    will-change: left, top;
-    z-index: 10;
-  }
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
 
-  #btn:active { transform: scale(.95); }
+    .nav-links li {
+      margin-left: 1.5rem;
+    }
 
-  /* 成功点中后的弹窗 */
-  #popup {
-    position: fixed;
-    inset: 0;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0,0,0,.6);
-    z-index: 100;
-  }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+    }
 
-  #popup.show { display: flex; }
+    .nav-links a:hover {
+      color: #ffcc00;
+    }
 
-  .card {
-    background: #fff;
-    padding: 40px 50px;
-    border-radius: 20px;
-    text-align: center;
-    max-width: 90vw;
-    box-shadow: 0 20px 60px rgba(0,0,0,.5);
-    animation: pop .3s ease;
-  }
+    .menu-btn {
+      display: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
 
-  @keyframes pop {
-    from { transform: scale(.7); opacity: 0; }
-    to   { transform: scale(1);  opacity: 1; }
-  }
+    .hero {
+      padding: 4rem 5%;
+      text-align: center;
+      background: white;
+      margin: 2rem 5%;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
 
-  .card .emoji { font-size: 3.5rem; }
-  .card h2 { margin: 12px 0; color: #333; }
-  .card p  { color: #777; margin-bottom: 22px; line-height: 1.6; }
+    .hero h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: #4a6cf7;
+    }
 
-  .card button {
-    padding: 12px 34px;
-    font-size: 1rem;
-    color: #fff;
-    background: #7b68ee;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: .2s;
-  }
-  .card button:hover { background: #6a57d6; }
-</style>
+    .hero p {
+      font-size: 1rem;
+      color: #666;
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.6;
+    }
+
+    .btn {
+      background-color: #4a6cf7;
+      color: white;
+      padding: 0.7rem 1.8rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin: 0 0.5rem;
+    }
+
+    .btn:hover {
+      background-color: #3a5ce7;
+    }
+
+    .btn-prank {
+      background-color: #e63946;
+    }
+    .btn-prank:hover {
+      background-color: #c1121f;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: #4a6cf7;
+    }
+
+    .classmates, .scores {
+      padding: 3rem 5%;
+    }
+
+    .classmates-container, .scores-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .classmate-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 1rem;
+    }
+
+    .classmate-card {
+      background: #f8f9ff;
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .classmate-name {
+      font-weight: bold;
+      color: #4a6cf7;
+    }
+
+    .scores-container {
+      max-height: 500px;
+      overflow-y: auto;
+    }
+
+    .score-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .score-table th, .score-table td {
+      padding: 0.8rem;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+      white-space: nowrap;
+    }
+
+    .score-table th {
+      background-color: #4a6cf7;
+      color: white;
+      position: sticky;
+      top: 0;
+    }
+
+    footer {
+      background-color: #4a6cf7;
+      color: white;
+      text-align: center;
+      padding: 1.5rem 5%;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .menu-btn {
+        display: block;
+      }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #4a6cf7;
+        padding: 1rem 5%;
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .nav-links li {
+        margin: 0.8rem 0;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <h1>😜 来抓我呀，抓到算我输</h1>
-  <button id="btn">点我呀 →</button>
-  <div id="hint"></div>
+<nav id="mainNav">
+  <div class="nav-container">
+    <div class="logo">南安一中<span>32</span>班</div>
+    <div class="menu-btn" id="menuBtn">三</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">首页</a></li>
+      <li><a href="#classmates">同学目录</a></li>
+      <li><a href="#scores">成绩查询</a></li>
+    </ul>
+  </div>
+</nav>
 
-  <!-- 弹窗 -->
-  <div id="popup">
-    <div class="card">
-      <div class="emoji">🤡</div>
-      <h2>哈哈，你上当了！</h2>
-      <p>其实这个按钮本来就不想被点到，<br>你却这么执着……</p>
-      <button onclick="location.reload()">再玩一次</button>
+<section class="hero" id="home">
+  <h1>南安一中32班班级主页</h1>
+  <p>本班主页用于展示班级信息、同学名单与成绩查询。</p>
+  <a href="https://mrwin1230313.github.io/biadu/" target="_blank" class="btn btn-prank">趣味入口</a>
+</section>
+
+<section class="classmates" id="classmates">
+  <h2 class="section-title">全班同学目录（42人）</h2>
+  <div class="classmates-container">
+    <div class="classmate-grid">
+      <div class="classmate-card"><div class="classmate-name">1 常博闻</div></div>
+      <div class="classmate-card"><div class="classmate-name">2 傅恺峰</div></div>
+      <div class="classmate-card"><div class="classmate-name">3 洪晨熙</div></div>
+      <div class="classmate-card"><div class="classmate-name">4 黄博凯</div></div>
+      <div class="classmate-card"><div class="classmate-name">5 黄财鑫</div></div>
+      <div class="classmate-card"><div class="classmate-name">6 黄超亿</div></div>
+      <div class="classmate-card"><div class="classmate-name">7 黄德祺</div></div>
+      <div class="classmate-card"><div class="classmate-name">8 黄国云</div></div>
+      <div class="classmate-card"><div class="classmate-name">9 黄佳鹏</div></div>
+      <div class="classmate-card"><div class="classmate-name">10 黄建鑫</div></div>
+      <div class="classmate-card"><div class="classmate-name">11 黄锦阳</div></div>
+      <div class="classmate-card"><div class="classmate-name">12 黄君翔</div></div>
+      <div class="classmate-card"><div class="classmate-name">13 黄泷瑾</div></div>
+      <div class="classmate-card"><div class="classmate-name">14 黄书雄</div></div>
+      <div class="classmate-card"><div class="classmate-name">15 黄伟诚</div></div>
+      <div class="classmate-card"><div class="classmate-name">16 黄伟政</div></div>
+      <div class="classmate-card"><div class="classmate-name">17 黄一杰</div></div>
+      <div class="classmate-card"><div class="classmate-name">18 黄裕舜</div></div>
+      <div class="classmate-card"><div class="classmate-name">19 黄煜轩</div></div>
+      <div class="classmate-card"><div class="classmate-name">20 黄子毅</div></div>
+      <div class="classmate-card"><div class="classmate-name">21 黄梓辰</div></div>
+      <div class="classmate-card"><div class="classmate-name">22 李爱飞</div></div>
+      <div class="classmate-card"><div class="classmate-name">23 黑曼巴</div></div>
+      <div class="classmate-card"><div class="classmate-name">24 林伟彬</div></div>
+      <div class="classmate-card"><div class="classmate-name">25 肖文杰</div></div>
+      <div class="classmate-card"><div class="classmate-name">26 杨宇晨</div></div>
+      <div class="classmate-card"><div class="classmate-name">27 尤恺晨</div></div>
+      <div class="classmate-card"><div class="classmate-name">28 蔡思琪</div></div>
+      <div class="classmate-card"><div class="classmate-name">29 陈昕钰</div></div>
+      <div class="classmate-card"><div class="classmate-name">30 黄冠瑜</div></div>
+      <div class="classmate-card"><div class="classmate-name">31 黄佳琳</div></div>
+      <div class="classmate-card"><div class="classmate-name">32 黄琪媛</div></div>
+      <div class="classmate-card"><div class="classmate-name">33 黄诗妍</div></div>
+      <div class="classmate-card"><div class="classmate-name">34 黄诗瑶</div></div>
+      <div class="classmate-card"><div class="classmate-name">35 黄钰玲</div></div>
+      <div class="classmate-card"><div class="classmate-name">36 黄梓晴</div></div>
+      <div class="classmate-card"><div class="classmate-name">37 李惠琳</div></div>
+      <div class="classmate-card"><div class="classmate-name">38 李梓萱</div></div>
+      <div class="classmate-card"><div class="classmate-name">39 林素雨</div></div>
+      <div class="classmate-card"><div class="classmate-name">40 肖诗娴</div></div>
+      <div class="classmate-card"><div class="classmate-name">41 肖梓怡</div></div>
+      <div class="classmate-card"><div class="classmate-name">42 张晨希</div></div>
     </div>
   </div>
+</section>
+
+<section class="scores" id="scores">
+  <h2 class="section-title">成绩查询（7科）</h2>
+  <div class="scores-container">
+    <table class="score-table">
+      <tr>
+        <th>姓名</th>
+        <th>语文</th>
+        <th>数学</th>
+        <th>英语</th>
+        <th>道法</th>
+        <th>生物</th>
+        <th>地理</th>
+        <th>历史</th>
+      </tr>
+      <tr><td>1 常博闻</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>2 傅恺峰</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>3 洪晨熙</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>4 黄博凯</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>5 黄财鑫</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>6 黄超亿</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>7 黄德祺</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>8 黄国云</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>9 黄佳鹏</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>10 黄建鑫</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>11 黄锦阳</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>12 黄君翔</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>13 黄泷瑾</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>14 黄书雄</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>15 黄伟诚</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>16 黄伟政</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>17 黄一杰</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>18 黄裕舜</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>19 黄煜轩</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>20 黄子毅</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>21 黄梓辰</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>22 李爱飞</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>23 黑曼巴</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>24 林伟彬</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>25 肖文杰</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>26 杨宇晨</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>27 尤恺晨</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>28 蔡思琪</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>29 陈昕钰</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>30 黄冠瑜</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>31 黄佳琳</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>32 黄琪媛</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>33 黄诗妍</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>34 黄诗瑶</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>35 黄钰玲</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>36 黄梓晴</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>37 李惠琳</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>38 李梓萱</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>39 林素雨</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>40 肖诗娴</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>41 肖梓怡</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+      <tr><td>42 张晨希</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <p>南安一中32班 · 班级主页</p>
+  <p>2026</p>
+</footer>
 
 <script>
-  const btn   = document.getElementById('btn');
-  const hint  = document.getElementById('hint');
-  const popup = document.getElementById('popup');
+// 页面加载完成后显示
+window.addEventListener('load', () => {
+  document.body.style.opacity = 1;
+});
 
-  const teases = [
-    "太慢啦~ 再快点！",
-    "就这？我还没用力呢",
-    "你手速还行，可惜我更溜 😏",
-    "再试试？我保证这次不跑（才怪）",
-    "别放弃嘛，很好玩的",
-    "是不是很气？哈哈哈哈哈",
-    "抓到我，我就……继续跑"
-  ];
-
-  let count = 0;
-  const MOVE_RADIUS = 110;   // 鼠标离多近按钮开始逃
-  const JUMP = 140;          // 每次逃多远
-
-  // 初始化按钮位置：屏幕中心
-  function placeCenter() {
-    btn.style.left = (window.innerWidth  / 2 - btn.offsetWidth  / 2) + 'px';
-    btn.style.top  = (window.innerHeight / 2 - btn.offsetHeight / 2) + 'px';
-  }
-  placeCenter();
-
-  // 计算按钮中心点
-  function center(el) {
-    const r = el.getBoundingClientRect();
-    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
-  }
-
-  // 判断鼠标是否太近，太近就跳走
-  function maybeRun(mx, my) {
-    const c = center(btn);
-    const dx = c.x - mx;
-    const dy = c.y - my;
-    const dist = Math.hypot(dx, dy);
-
-    if (dist < MOVE_RADIUS) {
-      escape(mx, my);
-    }
-  }
-
-  // 逃跑逻辑
-  function escape(mx, my) {
-    const w = window.innerWidth,  h = window.innerHeight;
-    const bw = btn.offsetWidth,   bh = btn.offsetHeight;
-    const c  = center(btn);
-
-    // 朝远离鼠标的方向跳
-    let nx = c.x + Math.sign(c.x - mx || 1) * JUMP;
-    let ny = c.y + Math.sign(c.y - my || 1) * JUMP;
-
-    // 加点随机，别太规律
-    nx += (Math.random() - 0.5) * 180;
-    ny += (Math.random() - 0.5) * 180;
-
-    // 夹在屏幕内
-    nx = Math.max(10, Math.min(w - bw - 10, nx - bw / 2));
-    ny = Math.max(10, Math.min(h - bh - 10, ny - bh / 2));
-
-    btn.style.left = nx + 'px';
-    btn.style.top  = ny + 'px';
-
-    hint.textContent = teases[count % teases.length];
-    count++;
-  }
-
-  // 鼠标移动 -> 触发逃跑
-  document.addEventListener('mousemove', e => {
-    maybeRun(e.clientX, e.clientY);
-  });
-
-  // 手机端：手指靠近也能逃
-  document.addEventListener('touchmove', e => {
-    const t = e.touches[0];
-    maybeRun(t.clientX, t.clientY);
-  }, { passive: true });
-
-  // 万一真被点到了（比如键盘/脚本），给点面子
-  btn.addEventListener('click', () => {
-    hint.textContent = "？？你怎么真点到了 😐";
-    popup.classList.add('show');
-  });
-
-  // 键盘党：按钮也可以用 Tab 聚焦，回车触发
-  btn.addEventListener('keydown', e => {
-    if (e.key === 'Enter') popup.classList.add('show');
-  });
+// 移动端菜单切换
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+menuBtn.addEventListener('click', () => {
+  navLinks.classList.toggle('show');
+});
 </script>
 </body>
 </html>
