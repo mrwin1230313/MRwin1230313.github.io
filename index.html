@@ -1,587 +1,223 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>南安一中32班搞怪阵地</title>
-  <!-- 百度统计代码 -->
-  <script>
-  var _hmt = _hmt || [];
-  (function() {
-    var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?8cda4adca942136dded8b2549c7aab98";
-    var s = document.getElementsByTagName("script")[0]; 
-    s.parentNode.insertBefore(hm, s);
-  })();
-  </script>
-  <!-- 样式表 -->
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Microsoft YaHei", sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>你点不到我~</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
-      background-color: #f8f9fa;
-      min-height: 100vh;
-      padding-bottom: 20px;
-      opacity: 0;
-      transition: opacity 0.8s ease-in-out;
-    }
+  body {
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1e1e2f, #2b2b45, #1e1e2f);
+    background-size: 400% 400%;
+    animation: bgMove 12s ease infinite;
+    font-family: "Microsoft YaHei", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: crosshair;
+    user-select: none;
+  }
 
-    nav {
-      background-color: #4a6cf7;
-      padding: 1rem 5%;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
+  @keyframes bgMove {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+  h1 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 12px #7b68ee;
+    animation: float 2.5s ease-in-out infinite;
+  }
 
-    .logo {
-      color: white;
-      font-size: 1.5rem;
-      font-weight: bold;
-      text-decoration: none;
-    }
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50%     { transform: translateY(-10px); }
+  }
 
-    .logo span {
-      color: #ffcc00;
-    }
+  #hint {
+    color: #aaa;
+    margin-top: 2rem;
+    font-size: 0.95rem;
+    height: 1.2em;
+  }
 
-    .nav-links {
-      display: flex;
-      list-style: none;
-    }
+  /* 逃跑按钮 */
+  #btn {
+    position: fixed;
+    padding: 16px 42px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(45deg, #ff5f6d, #ffc371);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(255,95,109,.5);
+    transition: transform .12s ease;
+    will-change: left, top;
+    z-index: 10;
+  }
 
-    .nav-links li {
-      margin-left: 1.5rem;
-    }
+  #btn:active { transform: scale(.95); }
 
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-size: 1rem;
-    }
+  /* 成功点中后的弹窗 */
+  #popup {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,.6);
+    z-index: 100;
+  }
 
-    .nav-links a:hover {
-      color: #ffcc00;
-    }
+  #popup.show { display: flex; }
 
-    .menu-btn {
-      display: none;
-      color: white;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
+  .card {
+    background: #fff;
+    padding: 40px 50px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 90vw;
+    box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    animation: pop .3s ease;
+  }
 
-    .hero {
-      padding: 4rem 5%;
-      text-align: center;
-      background: white;
-      margin: 2rem 5%;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
+  @keyframes pop {
+    from { transform: scale(.7); opacity: 0; }
+    to   { transform: scale(1);  opacity: 1; }
+  }
 
-    .hero h1 {
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-      color: #4a6cf7;
-    }
+  .card .emoji { font-size: 3.5rem; }
+  .card h2 { margin: 12px 0; color: #333; }
+  .card p  { color: #777; margin-bottom: 22px; line-height: 1.6; }
 
-    .hero p {
-      font-size: 1rem;
-      color: #666;
-      max-width: 700px;
-      margin: 0 auto 1.5rem;
-      line-height: 1.6;
-    }
-
-    .btn {
-      background-color: #4a6cf7;
-      color: white;
-      padding: 0.7rem 1.8rem;
-      border: none;
-      border-radius: 6px;
-      font-size: 1rem;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      margin: 0 0.5rem;
-    }
-
-    .btn:hover {
-      background-color: #3a5ce7;
-    }
-
-    .btn-danger {
-      background-color: #ff4d4f;
-    }
-
-    .btn-danger:hover {
-      background-color: #ff2b2d;
-    }
-
-    /* 整蛊跳转按钮样式 */
-    .btn-prank {
-      background-color: #e63946;
-    }
-    .btn-prank:hover {
-      background-color: #c1121f;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
-      color: #4a6cf7;
-    }
-
-    .products, .classmates, .scores, .timetable, .draw-system {
-      padding: 3rem 5%;
-    }
-
-    .products-container, .classmates-container, .scores-container, .timetable-container, .draw-container {
-      background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-
-    .product-card {
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      border-radius: 8px;
-      background: #f8f9ff;
-      border-left: 4px solid #4a6cf7;
-    }
-
-    .product-card h3 {
-      color: #4a6cf7;
-      margin-bottom: 0.8rem;
-      font-size: 1.2rem;
-    }
-
-    .product-card p {
-      color: #666;
-      line-height: 1.6;
-      margin-bottom: 0.5rem;
-    }
-
-    .classmate-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      gap: 1rem;
-    }
-
-    .classmate-card {
-      background: #f8f9ff;
-      border-radius: 8px;
-      padding: 1rem;
-      text-align: center;
-    }
-
-    .classmate-name {
-      font-weight: bold;
-      color: #4a6cf7;
-    }
-
-    .scores-container {
-      max-height: 500px;
-      overflow-y: auto;
-    }
-
-    .score-table, .timetable-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: white;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    .score-table th, .score-table td, .timetable-table th, .timetable-table td {
-      padding: 0.8rem;
-      text-align: center;
-      border-bottom: 1px solid #eee;
-      white-space: nowrap;
-    }
-
-    .score-table th, .timetable-table th {
-      background-color: #4a6cf7;
-      color: white;
-      position: sticky;
-      top: 0;
-    }
-
-    .timetable-table td {
-      border: 1px solid #eee;
-    }
-
-    .draw-box {
-      text-align: center;
-      padding: 2rem;
-      margin: 1rem 0;
-      border-radius: 8px;
-      background: #f8f9ff;
-      border: 2px dashed #4a6cf7;
-    }
-
-    .draw-result {
-      font-size: 2rem;
-      font-weight: bold;
-      color: #4a6cf7;
-      margin: 1.5rem 0;
-      min-height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .draw-tips {
-      color: #666;
-      margin-top: 1rem;
-      font-size: 0.9rem;
-    }
-
-    footer {
-      background-color: #4a6cf7;
-      color: white;
-      text-align: center;
-      padding: 1.5rem 5%;
-      margin-top: 2rem;
-    }
-
-    @media (max-width: 768px) {
-      .menu-btn {
-        display: block;
-      }
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: #4a6cf7;
-        padding: 1rem 5%;
-      }
-      .nav-links.show {
-        display: flex;
-      }
-      .nav-links li {
-        margin: 0.8rem 0;
-      }
-      .draw-result {
-        font-size: 1.5rem;
-      }
-    }
-  </style>
+  .card button {
+    padding: 12px 34px;
+    font-size: 1rem;
+    color: #fff;
+    background: #7b68ee;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .2s;
+  }
+  .card button:hover { background: #6a57d6; }
+</style>
 </head>
 <body>
 
-<nav id="mainNav">
-  <div class="nav-container">
-    <div class="logo">南安一中<span>32</span>班</div>
-    <div class="menu-btn" id="menuBtn">三</div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#home">首页</a></li>
-      <li><a href="#products">产品介绍</a></li>
-      <li><a href="#classmates">同学目录</a></li>
-      <li><a href="#scores">成绩查询</a></li>
-      <li><a href="#timetable">课程表</a></li>
-      <li><a href="#draw-system">抽人系统</a></li>
-    </ul>
-  </div>
-</nav>
+  <h1>😜 来抓我呀，抓到算我输</h1>
+  <button id="btn">点我呀 →</button>
+  <div id="hint"></div>
 
-<section class="hero" id="home">
-  <h1>南安一中32班班级主页</h1>
-  <p>本班主页用于展示班级信息、同学名单、课程安排与成绩查询，新增抽人系统功能！</p>
-  <a href="#draw-system" class="btn">进入抽人系统</a>
-  <!-- 新增：跳转至你的年龄验证整蛊网站 -->
-  <a href="https://mrwin1230313.github.io/biadu/" target="_blank" class="btn btn-prank">趣味入口</a>
-</section>
-
-<section class="products" id="products">
-  <h2 class="section-title">产品介绍</h2>
-  <div class="products-container">
-    <div class="product-card">
-      <h3>飞牛NAS</h3>
-      <p>飞牛NAS是一款高性能的网络存储设备，具备大容量、高稳定性、低功耗的特点。支持多设备同步、远程访问、数据备份与共享，可轻松搭建私人云存储系统，为各类数据（包括植物培养箱的监控数据、灌溉日志等）提供安全可靠的存储解决方案。</p>
-      <p>同时支持挂载青龙面板脚本，实现存储与自动化控制的无缝衔接，满足植物培养箱数据存储与自动化管理的双重需求。</p>
-    </div>
-    <div class="product-card">
-      <h3>植物培养箱</h3>
-      <p>植物培养箱是一款智能化的植物培育设备，具备精准控温、控湿、控光、通风调节功能，可模拟不同环境条件下的生长环境，适用于各类植物的育苗、组培、生长试验等场景。</p>
-      <p>设备支持外接传感器实时监测土壤湿度、营养液浓度、环境CO₂浓度等关键参数，为自动化灌溉和AI管控提供数据基础。</p>
-    </div>
-    <div class="product-card">
-      <h3>青龙面板全自动灌溉</h3>
-      <p>青龙面板是一款可视化的脚本管理工具，通过配置自定义脚本，可实现植物培养箱的全自动灌溉控制。根据预设的时间周期、土壤湿度阈值等条件，自动触发灌溉泵启停，精准控制灌溉水量和频率，无需人工干预。</p>
-      <p>脚本可读取飞牛NAS存储的历史数据，动态调整灌溉策略，适配不同植物的生长需求，同时记录灌溉日志便于追溯分析。</p>
-    </div>
-    <div class="product-card">
-      <h3>OALLM千问AI接管植物培养箱</h3>
-      <p>OALLM千问AI可全面接管植物培养箱的运行管控，基于海量植物生长数据和实时监测的环境参数，通过AI算法智能调整温度、湿度、光照、灌溉、通风等所有运行参数。</p>
-      <p>具备自主学习能力，可根据植物生长状态动态优化培育方案，识别异常生长情况并自动调整管控策略，同时可通过飞牛NAS调取历史数据进行生长趋势分析，实现植物培养的全流程智能化、无人化管理。</p>
+  <!-- 弹窗 -->
+  <div id="popup">
+    <div class="card">
+      <div class="emoji">🤡</div>
+      <h2>哈哈，你上当了！</h2>
+      <p>其实这个按钮本来就不想被点到，<br>你却这么执着……</p>
+      <button onclick="location.reload()">再玩一次</button>
     </div>
   </div>
-</section>
-
-<section class="classmates" id="classmates">
-  <h2 class="section-title">全班同学目录（42人）</h2>
-  <div class="classmates-container">
-    <div class="classmate-grid">
-      <div class="classmate-card"><div class="classmate-name">1 常博闻</div></div>
-      <div class="classmate-card"><div class="classmate-name">2 傅恺峰</div></div>
-      <div class="classmate-card"><div class="classmate-name">3 洪晨熙</div></div>
-      <div class="classmate-card"><div class="classmate-name">4 黄博凯</div></div>
-      <div class="classmate-card"><div class="classmate-name">5 黄财鑫</div></div>
-      <div class="classmate-card"><div class="classmate-name">6 黄超亿</div></div>
-      <div class="classmate-card"><div class="classmate-name">7 黄德祺</div></div>
-      <div class="classmate-card"><div class="classmate-name">8 黄国云</div></div>
-      <div class="classmate-card"><div class="classmate-name">9 黄佳鹏</div></div>
-      <div class="classmate-card"><div class="classmate-name">10 黄建鑫</div></div>
-      <div class="classmate-card"><div class="classmate-name">11 黄锦阳</div></div>
-      <div class="classmate-card"><div class="classmate-name">12 黄君翔</div></div>
-      <div class="classmate-card"><div class="classmate-name">13 黄泷瑾</div></div>
-      <div class="classmate-card"><div class="classmate-name">14 黄书雄</div></div>
-      <div class="classmate-card"><div class="classmate-name">15 黄伟诚</div></div>
-      <div class="classmate-card"><div class="classmate-name">16 黄伟政</div></div>
-      <div class="classmate-card"><div class="classmate-name">17 黄一杰</div></div>
-      <div class="classmate-card"><div class="classmate-name">18 黄裕舜</div></div>
-      <div class="classmate-card"><div class="classmate-name">19 黄煜轩</div></div>
-      <div class="classmate-card"><div class="classmate-name">20 黄子毅</div></div>
-      <div class="classmate-card"><div class="classmate-name">21 黄梓辰</div></div>
-      <div class="classmate-card"><div class="classmate-name">22 李爱飞</div></div>
-      <div class="classmate-card"><div class="classmate-name">23 黑曼巴</div></div>
-      <div class="classmate-card"><div class="classmate-name">24 林伟彬</div></div>
-      <div class="classmate-card"><div class="classmate-name">25 肖文杰</div></div>
-      <div class="classmate-card"><div class="classmate-name">26 杨宇晨</div></div>
-      <div class="classmate-card"><div class="classmate-name">27 尤恺晨</div></div>
-      <div class="classmate-card"><div class="classmate-name">28 蔡思琪</div></div>
-      <div class="classmate-card"><div class="classmate-name">29 陈昕钰</div></div>
-      <div class="classmate-card"><div class="classmate-name">30 黄冠瑜</div></div>
-      <div class="classmate-card"><div class="classmate-name">31 黄佳琳</div></div>
-      <div class="classmate-card"><div class="classmate-name">32 黄琪媛</div></div>
-      <div class="classmate-card"><div class="classmate-name">33 黄诗妍</div></div>
-      <div class="classmate-card"><div class="classmate-name">34 黄诗瑶</div></div>
-      <div class="classmate-card"><div class="classmate-name">35 黄钰玲</div></div>
-      <div class="classmate-card"><div class="classmate-name">36 黄梓晴</div></div>
-      <div class="classmate-card"><div class="classmate-name">37 李惠琳</div></div>
-      <div class="classmate-card"><div class="classmate-name">38 李梓萱</div></div>
-      <div class="classmate-card"><div class="classmate-name">39 林素雨</div></div>
-      <div class="classmate-card"><div class="classmate-name">40 肖诗娴</div></div>
-      <div class="classmate-card"><div class="classmate-name">41 肖梓怡</div></div>
-      <div class="classmate-card"><div class="classmate-name">42 张晨希</div></div>
-    </div>
-  </div>
-</section>
-
-<section class="scores" id="scores">
-  <h2 class="section-title">成绩查询（7科）</h2>
-  <div class="scores-container">
-    <table class="score-table">
-      <tr>
-        <th>姓名</th>
-        <th>语文</th>
-        <th>数学</th>
-        <th>英语</th>
-        <th>道法</th>
-        <th>生物</th>
-        <th>地理</th>
-        <th>历史</th>
-      </tr>
-      <tr><td>1 常博闻</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>2 傅恺峰</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>3 洪晨熙</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>4 黄博凯</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>5 黄财鑫</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>6 黄超亿</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>7 黄德祺</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>8 黄国云</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>9 黄佳鹏</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>10 黄建鑫</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>11 黄锦阳</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>12 黄君翔</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>13 黄泷瑾</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>14 黄书雄</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>15 黄伟诚</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>16 黄伟政</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>17 黄一杰</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>18 黄裕舜</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>19 黄煜轩</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>20 黄子毅</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>21 黄梓辰</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>22 李爱飞</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>23 黑曼巴</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>24 林伟彬</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>25 肖文杰</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>26 杨宇晨</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>27 尤恺晨</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>28 蔡思琪</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>29 陈昕钰</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>30 黄冠瑜</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>31 黄佳琳</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>32 黄琪媛</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>33 黄诗妍</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>34 黄诗瑶</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>35 黄钰玲</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>36 黄梓晴</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>37 李惠琳</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>38 李梓萱</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>39 林素雨</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>40 肖诗娴</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>41 肖梓怡</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-      <tr><td>42 张晨希</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td><td>最近没有考试</td></tr>
-    </table>
-  </div>
-</section>
-
-<section class="timetable" id="timetable">
-  <h2 class="section-title">课程表（每天8节）</h2>
-  <div class="timetable-container">
-    <table class="timetable-table">
-      <tr>
-        <th>节次</th>
-        <th>周一</th>
-        <th>周二</th>
-        <th>周三</th>
-        <th>周四</th>
-        <th>周五</th>
-      </tr>
-      <tr><td>1</td><td>语文</td><td>语文</td><td>语文</td><td>语文</td><td>英语</td></tr>
-      <tr><td>2</td><td>英语</td><td>体育</td><td>数学</td><td>数学</td><td>数学</td></tr>
-      <tr><td>3</td><td>数学</td><td>英语</td><td>英语</td><td>英语</td><td>语文</td></tr>
-      <tr><td>4</td><td>数学</td><td>数学</td><td>英语</td><td>体育</td><td>语文</td></tr>
-      <tr><td>5</td><td>道法</td><td>生物</td><td>音乐</td><td>生物</td><td>地理</td></tr>
-      <tr><td>6</td><td>体育</td><td>道法</td><td>历史</td><td>地理</td><td>体育</td></tr>
-      <tr><td>7</td><td>历史</td><td>地理</td><td>班会</td><td>心理</td><td>英语</td></tr>
-      <tr><td>8</td><td>地理</td><td>道法</td><td>生物</td><td>历史</td><td>语文</td></tr>
-    </table>
-  </div>
-</section>
-
-<section class="draw-system" id="draw-system">
-  <h2 class="section-title">32班抽人系统</h2>
-  <div class="draw-container">
-    <!-- 抽人系统1：全班（含卓吾班） -->
-    <div class="draw-box">
-      <h3 style="color: #4a6cf7; margin-bottom: 1rem;">抽人系统1：全班（含卓吾班，42人）</h3>
-      <button class="btn btn-danger" onclick="drawFullClass()">点击随机抽人</button>
-      <div class="draw-result" id="fullClassResult">等待抽取...</div>
-      <p class="draw-tips">包含所有42位同学</p>
-    </div>
-
-    <!-- 抽人系统2：排除指定同学 -->
-    <div class="draw-box">
-      <h3 style="color: #4a6cf7; margin-bottom: 1rem;">抽人系统2：排除指定同学（36人）</h3>
-      <button class="btn btn-danger" onclick="drawFilteredClass()">点击随机抽人</button>
-      <div class="draw-result" id="filteredClassResult">等待抽取...</div>
-      <p class="draw-tips">排除：6黄超亿、27尤恺晨、30黄冠瑜、32黄琪媛、36黄梓晴</p>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <p>南安一中32班 · 班级主页</p>
-  <p>2026</p>
-</footer>
 
 <script>
-// 页面加载完成后显示
-window.addEventListener('load', () => {
-  document.body.style.opacity = 1;
-});
+  const btn   = document.getElementById('btn');
+  const hint  = document.getElementById('hint');
+  const popup = document.getElementById('popup');
 
-// 移动端菜单切换
-const menuBtn = document.getElementById('menuBtn');
-const navLinks = document.getElementById('navLinks');
-menuBtn.addEventListener('click', () => {
-  navLinks.classList.toggle('show');
-});
+  const teases = [
+    "太慢啦~ 再快点！",
+    "就这？我还没用力呢",
+    "你手速还行，可惜我更溜 😏",
+    "再试试？我保证这次不跑（才怪）",
+    "别放弃嘛，很好玩的",
+    "是不是很气？哈哈哈哈哈",
+    "抓到我，我就……继续跑"
+  ];
 
-// 高概率同学序号列表
-const highProbNumbers = [1,2,3,5,8,10,11,13,14,17,18,21,29,39];
+  let count = 0;
+  const MOVE_RADIUS = 110;   // 鼠标离多近按钮开始逃
+  const JUMP = 140;          // 每次逃多远
 
-// 全班同学列表
-const fullClassList = [
-  "1 常博闻", "2 傅恺峰", "3 洪晨熙", "4 黄博凯", "5 黄财鑫", "6 黄超亿", 
-  "7 黄德祺", "8 黄国云", "9 黄佳鹏", "10 黄建鑫", "11 黄锦阳", "12 黄君翔", 
-  "13 黄泷瑾", "14 黄书雄", "15 黄伟诚", "16 黄伟政", "17 黄一杰", "18 黄裕舜", 
-  "19 黄煜轩", "20 黄子毅", "21 黄梓辰", "22 李爱飞", "23 黑曼巴", "24 林伟彬", 
-  "25 肖文杰", "26 杨宇晨", "27 尤恺晨", "28 蔡思琪", "29 陈昕钰", "30 黄冠瑜", 
-  "31 黄佳琳", "32 黄琪媛", "33 黄诗妍", "34 黄诗瑶", "35 黄钰玲", "36 黄梓晴", 
-  "37 李惠琳", "38 李梓萱", "39 林素雨", "40 肖诗娴", "41 肖梓怡", "42 张晨希"
-];
+  // 初始化按钮位置：屏幕中心
+  function placeCenter() {
+    btn.style.left = (window.innerWidth  / 2 - btn.offsetWidth  / 2) + 'px';
+    btn.style.top  = (window.innerHeight / 2 - btn.offsetHeight / 2) + 'px';
+  }
+  placeCenter();
 
-// 排除指定同学后的列表（排除6、27、30、32、36）
-const filteredClassList = fullClassList.filter(item => {
-  const num = parseInt(item.split(' ')[0]);
-  return ![6,27,30,32,36].includes(num);
-});
+  // 计算按钮中心点
+  function center(el) {
+    const r = el.getBoundingClientRect();
+    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+  }
 
-// 带权重的随机抽取函数
-function weightedRandomPick(list) {
-  // 构建权重列表：高概率同学权重为5，普通同学权重为1
-  let weightedList = [];
-  list.forEach(item => {
-    const num = parseInt(item.split(' ')[0]);
-    const weight = highProbNumbers.includes(num) ? 5 : 1;
-    // 根据权重重复添加，权重越高被抽到概率越大
-    for(let i=0; i<weight; i++) {
-      weightedList.push(item);
+  // 判断鼠标是否太近，太近就跳走
+  function maybeRun(mx, my) {
+    const c = center(btn);
+    const dx = c.x - mx;
+    const dy = c.y - my;
+    const dist = Math.hypot(dx, dy);
+
+    if (dist < MOVE_RADIUS) {
+      escape(mx, my);
     }
+  }
+
+  // 逃跑逻辑
+  function escape(mx, my) {
+    const w = window.innerWidth,  h = window.innerHeight;
+    const bw = btn.offsetWidth,   bh = btn.offsetHeight;
+    const c  = center(btn);
+
+    // 朝远离鼠标的方向跳
+    let nx = c.x + Math.sign(c.x - mx || 1) * JUMP;
+    let ny = c.y + Math.sign(c.y - my || 1) * JUMP;
+
+    // 加点随机，别太规律
+    nx += (Math.random() - 0.5) * 180;
+    ny += (Math.random() - 0.5) * 180;
+
+    // 夹在屏幕内
+    nx = Math.max(10, Math.min(w - bw - 10, nx - bw / 2));
+    ny = Math.max(10, Math.min(h - bh - 10, ny - bh / 2));
+
+    btn.style.left = nx + 'px';
+    btn.style.top  = ny + 'px';
+
+    hint.textContent = teases[count % teases.length];
+    count++;
+  }
+
+  // 鼠标移动 -> 触发逃跑
+  document.addEventListener('mousemove', e => {
+    maybeRun(e.clientX, e.clientY);
   });
-  // 随机抽取
-  const randomIdx = Math.floor(Math.random() * weightedList.length);
-  return weightedList[randomIdx];
-}
 
-// 抽全班（带权重）
-function drawFullClass() {
-  const resultDom = document.getElementById('fullClassResult');
-  // 动画效果
-  let count = 0;
-  const timer = setInterval(() => {
-    // 动画阶段随机抽（无权重），最后一次用权重抽
-    const randomItem = count >= 19 
-      ? weightedRandomPick(fullClassList) 
-      : fullClassList[Math.floor(Math.random() * fullClassList.length)];
-    resultDom.textContent = randomItem;
-    count++;
-    if (count >= 20) {
-      clearInterval(timer);
-    }
-  }, 50);
-}
+  // 手机端：手指靠近也能逃
+  document.addEventListener('touchmove', e => {
+    const t = e.touches[0];
+    maybeRun(t.clientX, t.clientY);
+  }, { passive: true });
 
-// 抽过滤后的班级（带权重）
-function drawFilteredClass() {
-  const resultDom = document.getElementById('filteredClassResult');
-  // 动画效果
-  let count = 0;
-  const timer = setInterval(() => {
-    // 动画阶段随机抽（无权重），最后一次用权重抽
-    const randomItem = count >= 19 
-      ? weightedRandomPick(filteredClassList) 
-      : filteredClassList[Math.floor(Math.random() * filteredClassList.length)];
-    resultDom.textContent = randomItem;
-    count++;
-    if (count >= 20) {
-      clearInterval(timer);
-    }
-  }, 50);
-}
+  // 万一真被点到了（比如键盘/脚本），给点面子
+  btn.addEventListener('click', () => {
+    hint.textContent = "？？你怎么真点到了 😐";
+    popup.classList.add('show');
+  });
+
+  // 键盘党：按钮也可以用 Tab 聚焦，回车触发
+  btn.addEventListener('keydown', e => {
+    if (e.key === 'Enter') popup.classList.add('show');
+  });
 </script>
 </body>
 </html>
