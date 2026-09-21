@@ -1,666 +1,311 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>南安一中·32班 | 班级主页</title>
-  <!-- 使用 Google Material Icons (简洁风格) -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>南安一中32班搞怪阵地</title>
+  <!-- 百度统计代码 -->
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8cda4adca942136dded8b2549c7aab98";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+  <!-- 样式表 -->
   <style>
-    /* 全局重置与字体 */
+    /* ===== 全局重置与基础样式 ===== */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: "Microsoft YaHei", sans-serif;
     }
 
     body {
-      background: #f5f9ff;
-      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-      color: #1e2b3c;
-      line-height: 1.5;
-      padding: 2rem 1rem;
+      background-color: #f8f9fa;
+      min-height: 100vh;
+      padding-bottom: 20px;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
     }
 
-    /* 主容器——优雅的卡片式布局 */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      background: #ffffff;
-      border-radius: 2.5rem;
-      box-shadow: 0 20px 40px -12px rgba(0, 26, 75, 0.15);
-      overflow: hidden;
-      border: 1px solid rgba(0, 70, 150, 0.08);
+    /* ===== 顶部导航栏 ===== */
+    nav {
+      background-color: #4a6cf7;
+      padding: 1rem 5%;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
-    /* 头部区域：带装饰纹理 */
-    .class-header {
-      background: linear-gradient(135deg, #0a2e5c 0%, #1a4b8c 100%);
-      padding: 3rem 2rem 2.2rem;
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
       color: white;
-      position: relative;
-      overflow: hidden;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
     }
 
-    /* 装饰圆点 —— 提升层次感 */
-    .class-header::before {
-      content: "";
-      position: absolute;
-      top: -30px;
-      right: -30px;
-      width: 200px;
-      height: 200px;
-      background: rgba(255, 255, 255, 0.06);
-      border-radius: 50%;
-      pointer-events: none;
+    .logo span {
+      color: #ffcc00;
     }
 
-    .class-header::after {
-      content: "";
-      position: absolute;
-      bottom: -40px;
-      left: -20px;
-      width: 280px;
-      height: 280px;
-      background: rgba(255, 255, 255, 0.04);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .class-header h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      position: relative;
-      z-index: 2;
-      margin-bottom: 0.5rem;
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    }
-
-    .class-header .badge {
-      background: rgba(255, 215, 0, 0.2);
-      backdrop-filter: blur(4px);
-      padding: 0.25rem 1rem;
-      border-radius: 40px;
-      font-size: 1rem;
-      font-weight: 400;
-      letter-spacing: 0;
-      border: 1px solid rgba(255, 215, 0, 0.5);
-      color: #ffde7a;
-      vertical-align: middle;
-      margin-left: 1rem;
-    }
-
-    .class-header .subhead {
-      font-size: 1.2rem;
-      opacity: 0.9;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      position: relative;
-      z-index: 2;
-      font-weight: 300;
-      letter-spacing: 0.5px;
-    }
-
-    .class-header .subhead i {
-      font-size: 1.8rem;
-      opacity: 0.8;
-    }
-
-    /* 导航条 */
     .nav-links {
       display: flex;
-      flex-wrap: wrap;
-      background: #f0f6ff;
-      padding: 0.8rem 2rem;
-      border-bottom: 1px solid rgba(26, 75, 140, 0.15);
-      gap: 0.5rem 1.8rem;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-left: 1.5rem;
     }
 
     .nav-links a {
+      color: white;
       text-decoration: none;
-      color: #1a4b8c;
-      font-weight: 500;
       font-size: 1rem;
-      padding: 0.4rem 0;
-      border-bottom: 3px solid transparent;
-      transition: 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
-
-    .nav-links a i {
-      font-size: 1.3rem;
-      color: #3773b3;
     }
 
     .nav-links a:hover {
-      border-bottom-color: #ffb347;
-      color: #0a2e5c;
+      color: #ffcc00;
     }
 
-    /* 主要内容网格 */
-    .content-grid {
-      display: grid;
-      grid-template-columns: 1fr 0.65fr;
-      gap: 2rem;
-      padding: 2rem 2rem 2.5rem;
-      background: #ffffff;
-    }
-
-    /* 左侧主要卡片 */
-    .main-col {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    /* 通用卡片样式 */
-    .card {
-      background: #ffffff;
-      border-radius: 1.8rem;
-      padding: 1.8rem 1.8rem 2rem;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
-      border: 1px solid #e9f0fa;
-      transition: box-shadow 0.2s;
-    }
-
-    .card:hover {
-      box-shadow: 0 10px 28px -8px rgba(0, 50, 100, 0.12);
-    }
-
-    .card-title {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
+    .menu-btn {
+      display: none;
+      color: white;
       font-size: 1.5rem;
-      font-weight: 600;
-      color: #0a2e5c;
-      margin-bottom: 1.4rem;
-      letter-spacing: -0.3px;
+      cursor: pointer;
     }
 
-    .card-title i {
-      font-size: 2rem;
-      color: #3773b3;
-    }
-
-    /* 班级格言 */
-    .motto {
-      background: #e8f2ff;
-      border-radius: 1.5rem;
-      padding: 1.5rem 2rem;
-      font-size: 1.35rem;
-      font-style: italic;
-      color: #0a2e5c;
-      font-weight: 500;
-      border-left: 8px solid #1a4b8c;
-      position: relative;
-      margin-bottom: 1.8rem;
-      line-height: 1.5;
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-    }
-
-    .motto i {
-      font-size: 3rem;
-      color: #1a4b8c;
-      opacity: 0.5;
-      line-height: 1;
-    }
-
-    /* 班级简介段落 */
-    .intro-text {
-      color: #2a405c;
-      font-size: 1.05rem;
-      margin-bottom: 1.5rem;
-    }
-
-    /* 统计卡片行 */
-    .stats-row {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      margin-top: 0.5rem;
-    }
-
-    .stat-item {
-      background: #f2f9ff;
-      padding: 0.8rem 1.5rem;
-      border-radius: 60px;
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      font-weight: 500;
-      color: #0a2e5c;
-      border: 1px solid #d6e5fa;
-    }
-
-    .stat-item i {
-      color: #3773b3;
-      font-size: 1.5rem;
-    }
-
-    /* 活动列表 */
-    .activity-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-
-    .activity-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      padding-bottom: 0.8rem;
-      border-bottom: 1px dashed #d6e5fa;
-    }
-
-    .activity-list li:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .activity-icon {
-      background: #e8f2ff;
-      border-radius: 16px;
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .activity-icon i {
-      font-size: 1.8rem;
-      color: #1a4b8c;
-    }
-
-    .activity-desc {
-      font-size: 1.05rem;
-      color: #1e2b3c;
-    }
-
-    .activity-desc strong {
-      color: #0a2e5c;
-      font-weight: 600;
-    }
-
-    .activity-desc .date {
-      font-size: 0.85rem;
-      color: #6b7f94;
-      display: block;
-      margin-top: 0.2rem;
-    }
-
-    /* 右侧 -- 成员快照与照片墙 */
-    .side-col {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    /* 班级成员网格 — 头像风格 */
-    .member-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin-top: 0.5rem;
-    }
-
-    .member-item {
-      background: #f8fcff;
-      border-radius: 1.2rem;
-      padding: 1rem 0.5rem 0.8rem;
+    /* ===== 主视觉区 / 班级介绍 ===== */
+    .hero {
+      padding: 4rem 5%;
       text-align: center;
-      border: 1px solid #e2eefb;
-      transition: transform 0.1s;
+      background: white;
+      margin: 2rem 5%;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     }
 
-    .member-item:hover {
-      transform: translateY(-3px);
-      border-color: #b8d4f5;
-    }
-
-    .member-avatar {
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(145deg, #d9e9ff, #b0caf0);
-      border-radius: 50%;
-      margin: 0 auto 0.6rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #1a4b8c;
-      font-weight: 700;
-      font-size: 1.4rem;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.02);
-    }
-
-    .member-name {
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: #1e2b3c;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    /* 照片墙占位 — 纯CSS装饰 */
-    .photo-wall {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.8rem;
-      margin-top: 0.8rem;
-    }
-
-    .photo-placeholder {
-      background: linear-gradient(130deg, #d4e6ff, #b3d0f0);
-      border-radius: 1rem;
-      aspect-ratio: 1 / 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #1a4b8c;
-      font-size: 0.8rem;
-      font-weight: 500;
-      border: 1px solid #fff;
-      box-shadow: 0 6px 12px -6px rgba(0, 40, 80, 0.15);
-      opacity: 0.85;
-    }
-
-    .photo-placeholder i {
+    .hero h1 {
       font-size: 2.2rem;
-      opacity: 0.7;
+      margin-bottom: 1rem;
+      color: #4a6cf7;
     }
 
-    /* 光荣榜 */
-    .honor-roll {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
+    .hero p {
+      font-size: 1rem;
+      color: #666;
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.6;
+    }
+
+    /* ===== 按钮 ===== */
+    .btn {
+      background-color: #4a6cf7;
+      color: white;
+      padding: 0.7rem 1.8rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin: 0 0.5rem;
+    }
+
+    .btn:hover {
+      background-color: #3a5ce7;
+    }
+
+    .btn-prank {
+      background-color: #e63946;
+    }
+
+    .btn-prank:hover {
+      background-color: #c1121f;
+    }
+
+    /* ===== 通用区块标题 ===== */
+    .section-title {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: #4a6cf7;
+    }
+
+    /* ===== 同学录区域 ===== */
+    .classmates {
+      padding: 3rem 5%;
+    }
+
+    .classmates-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .classmate-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
       gap: 1rem;
     }
 
-    .honor-roll li {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      font-size: 1rem;
-      background: #f8fcff;
-      padding: 0.6rem 1rem;
-      border-radius: 60px;
-      border-left: 5px solid #ffb347;
-    }
-
-    .honor-roll i {
-      color: #ffb347;
-      font-size: 1.4rem;
-    }
-
-    /* 页脚 */
-    .footer {
-      background: #f0f6ff;
-      padding: 1.5rem 2rem;
+    .classmate-card {
+      background: #f8f9ff;
+      border-radius: 8px;
+      padding: 1rem;
       text-align: center;
-      color: #5e7b9c;
-      font-size: 0.9rem;
-      border-top: 1px solid #d6e5fa;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 2rem;
-      flex-wrap: wrap;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
-    .footer span {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
+    .classmate-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(74, 108, 247, 0.12);
     }
 
-    .footer i {
-      font-size: 1.2rem;
-      color: #3773b3;
+    .classmate-name {
+      font-weight: bold;
+      color: #4a6cf7;
     }
 
-    /* 响应式设计 */
-    @media (max-width: 900px) {
-      .content-grid {
-        grid-template-columns: 1fr;
-        gap: 1.8rem;
-      }
-
-      .class-header h1 {
-        font-size: 2.2rem;
-        flex-wrap: wrap;
-      }
-
-      .class-header .badge {
-        font-size: 0.8rem;
-        margin-left: 0;
-      }
-
-      .member-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
+    /* ===== 页脚 ===== */
+    footer {
+      background-color: #4a6cf7;
+      color: white;
+      text-align: center;
+      padding: 1.5rem 5%;
+      margin-top: 2rem;
     }
 
-    @media (max-width: 550px) {
-      body {
-        padding: 0.8rem;
+    /* ===== 响应式设计 ===== */
+    @media (max-width: 768px) {
+      .menu-btn {
+        display: block;
       }
 
-      .class-header {
-        padding: 2rem 1.2rem 1.5rem;
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #4a6cf7;
+        padding: 1rem 5%;
       }
 
-      .class-header h1 {
-        font-size: 1.8rem;
+      .nav-links.show {
+        display: flex;
       }
 
-      .content-grid {
-        padding: 1.5rem 1.2rem;
+      .nav-links li {
+        margin: 0.8rem 0;
       }
-
-      .member-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .card {
-        padding: 1.4rem;
-      }
-
-      .motto {
-        font-size: 1.1rem;
-        padding: 1.2rem;
-      }
-    }
-
-    /* 工具类 */
-    .material-icons {
-      font-size: inherit;
-      vertical-align: middle;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- 班级头部区域 -->
-    <header class="class-header">
-      <h1>
-        <i class="material-icons" style="font-size: 3rem;">school</i>
-        南安一中 · 32班
-        <span class="badge">2027届</span>
-      </h1>
-      <div class="subhead">
-        <i class="material-icons">auto_awesome</i>
-        <span>卓越致远 · 团结共进</span>
-      </div>
-    </header>
 
-    <!-- 导航快捷入口 -->
-    <nav class="nav-links">
-      <a href="#"><i class="material-icons">dashboard</i> 班级首页</a>
-      <a href="#"><i class="material-icons">people</i> 班级成员</a>
-      <a href="#"><i class="material-icons">photo_library</i> 活动掠影</a>
-      <a href="#"><i class="material-icons">emoji_events</i> 荣誉墙</a>
-      <a href="#"><i class="material-icons">forum</i> 留言板</a>
-    </nav>
+  <!-- ===== 导航栏 ===== -->
+  <nav id="mainNav">
+    <div class="nav-container">
+      <div class="logo">南安一中<span>32</span>班</div>
+      <div class="menu-btn" id="menuBtn">三</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">首页</a></li>
+        <li><a href="#classmates">同学目录</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <!-- 主内容网格 -->
-    <div class="content-grid">
-      <!-- 左侧主列 -->
-      <div class="main-col">
-        <!-- 班级简介+格言卡片 -->
-        <section class="card">
-          <div class="card-title">
-            <i class="material-icons">emoji_people</i>
-            班级简介
-          </div>
-          <div class="motto">
-            <i class="material-icons">format_quote</i>
-            <span>志存高远，脚踏实地；三十二班，共创辉煌。</span>
-          </div>
-          <p class="intro-text">
-            南安一中32班是一个由52名朝气蓬勃的同学组成的大家庭。我们秉承“勤奋、严谨、求实、创新”的校训，
-            在班主任李老师的带领下，携手并进，在学习和各项活动中都取得了优异的成绩。
-            我们热爱生活，热爱集体，用青春书写属于我们的故事。
-          </p>
-          <div class="stats-row">
-            <div class="stat-item">
-              <i class="material-icons">groups</i> 52 位同学
-            </div>
-            <div class="stat-item">
-              <i class="material-icons">woman</i> 28 女生
-            </div>
-            <div class="stat-item">
-              <i class="material-icons">man</i> 24 男生
-            </div>
-            <div class="stat-item">
-              <i class="material-icons">calendar_month</i> 2024级
-            </div>
-          </div>
-        </section>
+  <!-- ===== 主视觉区 / 班级介绍 ===== -->
+  <section class="hero" id="home">
+    <h1>南安一中32班班级主页</h1>
+    <p>本班主页用于展示班级信息与同学名单。</p>
+    <a href="https://mrwin1230313.github.io/biadu/" target="_blank" class="btn btn-prank">趣味入口</a>
+  </section>
 
-        <!-- 近期班级活动卡片 -->
-        <section class="card">
-          <div class="card-title">
-            <i class="material-icons">event_note</i>
-            近期班级活动
-          </div>
-          <ul class="activity-list">
-            <li>
-              <div class="activity-icon"><i class="material-icons">sports_soccer</i></div>
-              <div class="activity-desc">
-                <strong>秋季趣味运动会</strong> — 32班获得团体总分第三名
-                <span class="date">2024年10月18日</span>
-              </div>
-            </li>
-            <li>
-              <div class="activity-icon"><i class="material-icons">menu_book</i></div>
-              <div class="activity-desc">
-                <strong>“书香班级” 读书分享会</strong> — 张明同学分享《平凡的世界》
-                <span class="date">2024年11月5日</span>
-              </div>
-            </li>
-            <li>
-              <div class="activity-icon"><i class="material-icons">volunteer_activism</i></div>
-              <div class="activity-desc">
-                <strong>社区志愿服务</strong> — 前往南安敬老院送温暖
-                <span class="date">2024年11月20日</span>
-              </div>
-            </li>
-            <li>
-              <div class="activity-icon"><i class="material-icons">psychology</i></div>
-              <div class="activity-desc">
-                <strong>期中总结表彰班会</strong> — 15位同学获得“学习标兵”称号
-                <span class="date">2024年12月2日</span>
-              </div>
-            </li>
-          </ul>
-        </section>
-      </div>
-
-      <!-- 右侧边列 -->
-      <div class="side-col">
-        <!-- 班级成员预览 (班干部) -->
-        <section class="card">
-          <div class="card-title">
-            <i class="material-icons">stars</i>
-            班级骨干
-          </div>
-          <div class="member-grid">
-            <div class="member-item">
-              <div class="member-avatar">林</div>
-              <div class="member-name">林晓</div>
-            </div>
-            <div class="member-item">
-              <div class="member-avatar">陈</div>
-              <div class="member-name">陈昊</div>
-            </div>
-            <div class="member-item">
-              <div class="member-avatar">黄</div>
-              <div class="member-name">黄雅</div>
-            </div>
-            <div class="member-item">
-              <div class="member-avatar">吴</div>
-              <div class="member-name">吴迪</div>
-            </div>
-            <div class="member-item">
-              <div class="member-avatar">苏</div>
-              <div class="member-name">苏瑶</div>
-            </div>
-            <div class="member-item">
-              <div class="member-avatar">郑</div>
-              <div class="member-name">郑凯</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- 照片墙 (占位风格) -->
-        <section class="card">
-          <div class="card-title">
-            <i class="material-icons">collections</i>
-            班级瞬间
-          </div>
-          <div class="photo-wall">
-            <div class="photo-placeholder"><i class="material-icons">image</i></div>
-            <div class="photo-placeholder"><i class="material-icons">photo_camera</i></div>
-            <div class="photo-placeholder"><i class="material-icons">landscape</i></div>
-            <div class="photo-placeholder"><i class="material-icons">group</i></div>
-          </div>
-        </section>
-
-        <!-- 光荣榜/荣誉卡片 -->
-        <section class="card">
-          <div class="card-title">
-            <i class="material-icons">workspace_premium</i>
-            班级荣誉
-          </div>
-          <ul class="honor-roll">
-            <li><i class="material-icons">military_tech</i> 校级先进班集体</li>
-            <li><i class="material-icons">military_tech</i> 运动会精神文明奖</li>
-            <li><i class="material-icons">military_tech</i> 合唱比赛一等奖</li>
-            <li><i class="material-icons">military_tech</i> 学习进步显著班级</li>
-          </ul>
-        </section>
+  <!-- ===== 同学目录（42人） ===== -->
+  <section class="classmates" id="classmates">
+    <h2 class="section-title">全班同学目录（42人）</h2>
+    <div class="classmates-container">
+      <div class="classmate-grid">
+        <div class="classmate-card"><div class="classmate-name">1 常博闻</div></div>
+        <div class="classmate-card"><div class="classmate-name">2 傅恺峰</div></div>
+        <div class="classmate-card"><div class="classmate-name">3 洪晨熙</div></div>
+        <div class="classmate-card"><div class="classmate-name">4 黄博凯</div></div>
+        <div class="classmate-card"><div class="classmate-name">5 黄财鑫</div></div>
+        <div class="classmate-card"><div class="classmate-name">6 黄超亿</div></div>
+        <div class="classmate-card"><div class="classmate-name">7 黄德祺</div></div>
+        <div class="classmate-card"><div class="classmate-name">8 黄国云</div></div>
+        <div class="classmate-card"><div class="classmate-name">9 黄佳鹏</div></div>
+        <div class="classmate-card"><div class="classmate-name">10 黄建鑫</div></div>
+        <div class="classmate-card"><div class="classmate-name">11 黄锦阳</div></div>
+        <div class="classmate-card"><div class="classmate-name">12 黄君翔</div></div>
+        <div class="classmate-card"><div class="classmate-name">13 黄泷瑾</div></div>
+        <div class="classmate-card"><div class="classmate-name">14 黄书雄</div></div>
+        <div class="classmate-card"><div class="classmate-name">15 黄伟诚</div></div>
+        <div class="classmate-card"><div class="classmate-name">16 黄伟政</div></div>
+        <div class="classmate-card"><div class="classmate-name">17 黄一杰</div></div>
+        <div class="classmate-card"><div class="classmate-name">18 黄裕舜</div></div>
+        <div class="classmate-card"><div class="classmate-name">19 黄煜轩</div></div>
+        <div class="classmate-card"><div class="classmate-name">20 黄子毅</div></div>
+        <div class="classmate-card"><div class="classmate-name">21 黄梓辰</div></div>
+        <div class="classmate-card"><div class="classmate-name">22 李爱飞</div></div>
+        <div class="classmate-card"><div class="classmate-name">23 黑曼巴</div></div>
+        <div class="classmate-card"><div class="classmate-name">24 林伟彬</div></div>
+        <div class="classmate-card"><div class="classmate-name">25 肖文杰</div></div>
+        <div class="classmate-card"><div class="classmate-name">26 杨宇晨</div></div>
+        <div class="classmate-card"><div class="classmate-name">27 尤恺晨</div></div>
+        <div class="classmate-card"><div class="classmate-name">28 蔡思琪</div></div>
+        <div class="classmate-card"><div class="classmate-name">29 陈昕钰</div></div>
+        <div class="classmate-card"><div class="classmate-name">30 黄冠瑜</div></div>
+        <div class="classmate-card"><div class="classmate-name">31 黄佳琳</div></div>
+        <div class="classmate-card"><div class="classmate-name">32 黄琪媛</div></div>
+        <div class="classmate-card"><div class="classmate-name">33 黄诗妍</div></div>
+        <div class="classmate-card"><div class="classmate-name">34 黄诗瑶</div></div>
+        <div class="classmate-card"><div class="classmate-name">35 黄钰玲</div></div>
+        <div class="classmate-card"><div class="classmate-name">36 黄梓晴</div></div>
+        <div class="classmate-card"><div class="classmate-name">37 李惠琳</div></div>
+        <div class="classmate-card"><div class="classmate-name">38 李梓萱</div></div>
+        <div class="classmate-card"><div class="classmate-name">39 林素雨</div></div>
+        <div class="classmate-card"><div class="classmate-name">40 肖诗娴</div></div>
+        <div class="classmate-card"><div class="classmate-name">41 肖梓怡</div></div>
+        <div class="classmate-card"><div class="classmate-name">42 张晨希</div></div>
       </div>
     </div>
+  </section>
 
-    <!-- 页脚 -->
-    <footer class="footer">
-      <span><i class="material-icons">place</i> 福建省南安第一中学 · 32班</span>
-      <span><i class="material-icons">copyright</i> 2025 南安一中32班 班级主页</span>
-    </footer>
-  </div>
+  <!-- ===== 页脚 ===== -->
+  <footer>
+    <p>南安一中32班 · 班级主页</p>
+    <p>2026</p>
+  </footer>
+
+  <!-- ===== 交互脚本 ===== -->
+  <script>
+    // 页面加载完成后淡入显示
+    window.addEventListener('load', () => {
+      document.body.style.opacity = 1;
+    });
+
+    // 移动端菜单切换
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  </script>
 </body>
 </html>
